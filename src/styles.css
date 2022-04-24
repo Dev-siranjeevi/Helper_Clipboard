@@ -1,0 +1,102 @@
+@font-face {
+  font-family: robomed;
+  src: url(fonts/Poppins-Medium.ttf);
+}
+
+@font-face {
+  font-family: robothin;
+  src: url(fonts/Poppins-Regular.ttf);
+}
+:root {
+  --main-bg-color: #d1d9dc;
+  --section-bg-color: white;
+}
+body {
+  margin: auto;
+  font-family: robomed;
+
+}
+
+body, h1 {
+outline: none;
+border:0;
+background-color: var(--main-bg-color);
+}
+
+h1 {
+  font-size: 16px;
+  letter-spacing: 2px;
+}
+h1, button{
+    font-family: robothin;
+    color: black;
+}
+button {
+  outline: none;
+  border: 0;
+  background-color: var(--section-bg-color);
+  font-size: 12px;
+  border-radius: 6px;
+}
+
+p {
+  font-size: 13px;
+  word-wrap: break-word;
+  font-family: robothin;
+}
+button:hover, P:hover{
+  border: 2px solid #606465;
+}
+/* Additionl conditions */
+.noselect {
+  -webkit-user-select: none;
+}
+
+.drag {
+  -webkit-app-region: drag;
+}
+
+.no-drag {
+  -webkit-app-region: no-drag;
+}
+/* Header */
+.main {
+  /* background-color: #F2F2F2; */
+}
+
+.brand {
+  cursor: all-scroll;
+}
+
+.main div {
+  padding-inline: 10px;
+}
+
+.heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+/* Body */
+#mainBody {
+  margin-block: 4px;
+}
+
+#mainBody>div {
+  margin-block: 10px;
+}
+
+#mainBody * {
+  /* padding-inline: 10px; */
+}
+
+#clipList {
+  padding: 0;
+}
+
+.clipboard {
+  background-color: var(--section-bg-color);
+  border-radius: 5px;
+  padding: 6px;
+  cursor: pointer;
+}
