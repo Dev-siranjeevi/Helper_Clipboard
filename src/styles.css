@@ -61,7 +61,7 @@ button:hover, P:hover{
 }
 /* Header */
 .main {
-  /* background-color: #F2F2F2; */
+  margin-inline: 10px;
 }
 
 .brand {
@@ -69,7 +69,7 @@ button:hover, P:hover{
 }
 
 .main div {
-  padding-inline: 10px;
+  /* padding-inline: 10px; */
 }
 
 .heading {
@@ -86,17 +86,19 @@ button:hover, P:hover{
   margin-block: 10px;
 }
 
-#mainBody * {
-  /* padding-inline: 10px; */
-}
-
-#clipList {
-  padding: 0;
-}
 
 .clipboard {
   background-color: var(--section-bg-color);
   border-radius: 5px;
   padding: 6px;
   cursor: pointer;
+}
+.coord{
+  align-content: center;
+}
+input{
+  margin:0 12px 0 0;
+  vertical-align: middle;
+  position: relative;
+  top: -1px;
 }
