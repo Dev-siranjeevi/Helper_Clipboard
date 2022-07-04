@@ -1,0 +1,137 @@
+
+h1 {
+  font-size: 16px;
+  letter-spacing: 2px;
+}
+
+h1, button {
+  font-family: robothin;
+  color: black;
+}
+
+button {
+  outline: none;
+  border: 0;
+  /* background-color: var(--section-bg-color); */
+  font-size: 12px;
+  border-radius: 6px;
+  text-align: center;
+}
+
+p, span {
+  font-size: 13px;
+  word-wrap: break-word;
+  font-family: robothin;
+}
+
+button:hover, P:hover {
+  border: 2px solid #606465;
+}
+
+label {
+  user-select: none;
+}
+
+/* Additionl conditions */
+.noselect {
+  -webkit-user-select: none;
+}
+
+.drag {
+  -webkit-app-region: drag;
+}
+
+.no-drag {
+  -webkit-app-region: no-drag;
+}
+
+/* Header */
+.main {
+  margin-inline: 10px;
+}
+
+.brand {
+  cursor: all-scroll;
+}
+
+.main div {
+  /* padding-inline: 10px; */
+}
+
+.heading {
+  /* display: flex; */
+  margin-inline: auto;
+  margin-block: 0;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  /* position: absolute; */
+  /* width: 178px; */
+  height: 32px;
+  border-radius: 0px 0px 10px 10px;
+  top: 0;
+  position: absolute;
+}
+
+/* Body */
+#mainBody {
+  margin-block: 4px;
+}
+
+#mainBody>div {
+  margin-block: 10px;
+}
+
+.clipboard {
+  background-color: var(--section-bg-color);
+  border-radius: 5px;
+  padding: 6px;
+  cursor: pointer;
+}
+
+
+
+
+.footer {
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%, -90%);
+  padding: 0.7rem;
+  margin: 0;
+  border-radius: 10%;
+  background: var(--section-bg-color);
+  font-size: 0.7rem;
+  user-select: none;
+  display: none;
+}
+
+#act {
+  width: max-content;
+}
+
+.active {
+  display: block;
+  animation: blink linear 3s;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.bg {
+  /* The image used */
+  background-image: url("icons/bg-img.jpg") no-repeat center center fixed;
+  /* Full height */
+  height: 20%;
+}

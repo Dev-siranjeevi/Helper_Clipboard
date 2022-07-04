@@ -14,7 +14,7 @@ const createWindow = () => {
     minHeight: 400,
     frame:false,
     // transparent:true,
-    icon: path.join(__dirname, '/appIcon.ico'),
+    icon: path.join(__dirname, '/assets/icons/appIcon.ico'),
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
