@@ -102,12 +102,3 @@ function clearClipboard(eventvalue){
   console.log(clipList);
 
 }
-
-export const notify = (inpVal) => {
-  act.innerHTML = inpVal + " ";
-  // clvl.innerHTML = content;
-  footer.classList.add("active");
-  setTimeout(() => {
-    footer.classList.remove("active");
-  }, 3000)
-}
