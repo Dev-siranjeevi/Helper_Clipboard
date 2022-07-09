@@ -1,5 +1,5 @@
 import {
-  clipList,notify
+  clipList
 } from "./clipboard.js"
 export function pinClip(eventvalue){
   // Parent selector
