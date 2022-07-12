@@ -18,11 +18,17 @@ document.addEventListener("click", (a) => {
 function action(a, attr) {
   const clickedOn = a.srcElement;
   let tags = a.target.localName;
-
-  let writeToClip = clickedOn.innerText;
-  console.log(writeToClip);
+  let indexofclip = a.srcElement.id.replace("clipitem","");
+  // console.log(indexofclip);
+  let prior = clipList.slice().reverse();
+  let writeToClip = prior[Number(indexofclip)].value;
   if (tags === "p") {
+    console.log(writeToClip);
     clipboard.writeText(writeToClip);
-    console.log(clipList);
+    // console.log(clipList);
+    clickedOn.classList.add("copied");
+    setTimeout(()=>{
+          clickedOn.classList.remove("copied");
+    }, 1500);
   }
 }

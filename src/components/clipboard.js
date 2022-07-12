@@ -45,7 +45,7 @@ export const copyToClipboard = () => {
     if (clipAvbl === false) { //Check if the element exist in the array
       clipList.push(copiedValue) //if not then
       createView();
-      console.log(clipList);
+      // console.log(clipList);
     }
   }
 }
@@ -61,7 +61,7 @@ const createView = () => {
   // create a new div with same id and loop through the array.clipboard
   let root = document.createElement("div"); // parent
   root.id = "clipList";
-  let prior = clipList.slice().reverse();
+   let prior = clipList.slice().reverse();
   // const rclip = clipList.reverse();
   prior.forEach((clip,index)=>{
       let className = clip.pinned ==true?"clipboard pinned": "clipboard";
@@ -99,6 +99,6 @@ function clearClipboard(eventvalue){
   })
   // Create the new cliplist
   clipList = [...pinnedClip]
-  console.log(clipList);
+  // console.log(clipList);
 
 }
