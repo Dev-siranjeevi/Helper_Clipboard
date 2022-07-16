@@ -20,8 +20,13 @@ function action(a, attr) {
   let tags = a.target.localName;
   let indexofclip = a.srcElement.id.replace("clipitem","");
   // console.log(indexofclip);
-  let prior = clipList.slice().reverse();
-  let writeToClip = prior[Number(indexofclip)].value;
+  let writeToClip ;
+
+  if(clipList.length > 0){
+    let prior = clipList.slice().reverse();
+     writeToClip = prior[Number(indexofclip)].value;
+  }
+
   if (tags === "p") {
     console.log(writeToClip);
     clipboard.writeText(writeToClip);

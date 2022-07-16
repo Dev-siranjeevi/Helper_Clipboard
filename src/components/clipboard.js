@@ -3,7 +3,6 @@ const {
   clipboard
 } = require("electron");
 import {
-  cal,
   intialCoord
 } from "./coordinate.js"
 import {pinClip} from "./pinClip.js"
