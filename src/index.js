@@ -12,6 +12,9 @@ setInterval(copyToClipboard, 500); //Run it ever 500 ms
 // copy element
 document.addEventListener("click", (a) => {
   action(a, "Copied")
+  // const hey = clipList.reverse()
+  // console.log(hey);
+  console.log(clipList);
 
 })
 
@@ -32,8 +35,10 @@ function action(a, attr) {
     clipboard.writeText(writeToClip);
     // console.log(clipList);
     clickedOn.classList.add("copied");
+    clickedOn.classList.remove("hov");
     setTimeout(()=>{
           clickedOn.classList.remove("copied");
+          clickedOn.classList.add("hov");
     }, 1500);
   }
 }

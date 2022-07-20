@@ -5,7 +5,8 @@ const {
 import {
   intialCoord
 } from "./coordinate.js"
-import {pinClip} from "./pinClip.js"
+import {pinClip} from "./Clipboard/pinClip.js"
+import {createView} from "./Clipboard/createView.js"
 // Assign
 const getDataBtn = document.getElementById("get");
 const coordinate = document.getElementById("coordinate");
@@ -21,7 +22,6 @@ coordinate.addEventListener("click", (event) => {
 });
 
 export const copyToClipboard = () => {
-
   let clip = clipboard.readText() //Get the clipboard text\
   const secondLetter = clip.substring(1, 2)
   // console.log(secondLetter);
@@ -48,40 +48,9 @@ export const copyToClipboard = () => {
     }
   }
 }
-
-
-// function checkerA(ar)
-const createView = () => {
-
-  const prev = document.getElementById("clipList");
-  if (prev !== null) {
-    prev.remove(); //remove the old div
-  }
-  // create a new div with same id and loop through the array.clipboard
-  let root = document.createElement("div"); // parent
-  root.id = "clipList";
-   let prior = clipList.slice().reverse();
-  // const rclip = clipList.reverse();
-  prior.forEach((clip,index)=>{
-      let className = clip.pinned ==true?"clipboard pinned": "clipboard";
-      let clipId = "clipitem" + index;
-      // Create a paragraph element
-      let clipview = document.createElement("p");
-      clipview.id = clipId;
-      clipview.className =className;
-      clipview.innerHTML = clip.value;
-      // Appended it it to root/.
-      root.appendChild(clipview);
-      document.getElementById("mainBody").appendChild(root);
-  })
-}
-function creatUI(clip,index){
-
-}
 // Pin event of clipboard
 document.addEventListener("contextmenu", (a)=>{
   pinClip(a)
-
 });
 // clear clipboard
 clearAllData.addEventListener("click", (a)=>{
@@ -91,13 +60,14 @@ clearAllData.addEventListener("click", (a)=>{
 });
 
 function clearClipboard(eventvalue){
-  clipboard.writeText("");//Nothing is copied
   // loop through the list to filter out the pinned elements
   let pinnedClip = clipList.filter((item) => {
     return item.pinned;
   })
   // Create the new cliplist
-  clipList = [...pinnedClip]
-  // console.log(clipList);
+  clipList = [...pinnedClip];
 
+  // console.log();
+    clipboard.writeText(clipList[0].value);//Nothing is copied
+  // console.log(clipList);
 }

@@ -1,6 +1,6 @@
 import {
   clipList
-} from "./clipboard.js"
+} from "../clipboard.js"
 export function pinClip(eventvalue){
   // Parent selector
   const clickedOn = eventvalue.srcElement;
