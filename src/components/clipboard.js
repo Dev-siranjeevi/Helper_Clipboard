@@ -5,8 +5,12 @@ const {
 import {
   intialCoord
 } from "./coordinate.js"
-import {pinClip} from "./Clipboard/pinClip.js"
-import {createView} from "./Clipboard/createView.js"
+import {
+  pinClip
+} from "./Clipboard/pinClip.js"
+import {
+  createView
+} from "./Clipboard/createView.js"
 // Assign
 const getDataBtn = document.getElementById("get");
 const coordinate = document.getElementById("coordinate");
@@ -49,25 +53,31 @@ export const copyToClipboard = () => {
   }
 }
 // Pin event of clipboard
-document.addEventListener("contextmenu", (a)=>{
+document.addEventListener("contextmenu", (a) => {
   pinClip(a)
 });
 // clear clipboard
-clearAllData.addEventListener("click", (a)=>{
+clearAllData.addEventListener("click", (a) => {
   clearClipboard(a)
   // Update the UI
   createView();
 });
 
-function clearClipboard(eventvalue){
+function clearClipboard(eventvalue) {
   // loop through the list to filter out the pinned elements
   let pinnedClip = clipList.filter((item) => {
     return item.pinned;
   })
   // Create the new cliplist
-  clipList = [...pinnedClip];
+  if (pinnedClip.length > 0) {
+    clipList = [...pinnedClip];
+    let revereseClip = [...clipList];
+    revereseClip.reverse();
+    console.log(clipList);
+    console.log(revereseClip);
+    // console.log();
+    clipboard.writeText(revereseClip[0].value); //Nothing is copied
+  }
 
-  // console.log();
-    clipboard.writeText(clipList[0].value);//Nothing is copied
   // console.log(clipList);
 }
