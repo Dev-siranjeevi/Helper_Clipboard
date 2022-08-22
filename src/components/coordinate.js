@@ -76,7 +76,7 @@ function validateLong(){
 
 }
 function separatorCoord(coor) {
-  let remSeparator = coor.replace(/,/g, "."); // remove from decimal places
+  let remSeparator = coor.replace(/,|·/g, "."); // remove from decimal places
   remSeparator = (remSeparator.replace(/,|°|’|-|'|”|:|"|'/g, "")).replace(/ /g, ""); // remove all the separators // Fill the separator between /  /.
   // console.log(remSeparator);
   return remSeparator;

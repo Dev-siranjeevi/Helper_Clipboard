@@ -77,7 +77,10 @@ function clearClipboard(eventvalue) {
     console.log(revereseClip);
     // console.log();
     clipboard.writeText(revereseClip[0].value); //Nothing is copied
+  }else{
+    clipList = [];
+    clipboard.writeText(""); //Nothing is copied
+    // console.log(clipList);
   }
 
-  // console.log(clipList);
 }
