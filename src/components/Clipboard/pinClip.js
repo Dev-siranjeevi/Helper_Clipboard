@@ -1,28 +1,38 @@
 import {
   clipList
 } from "../clipboard.js"
-export function pinClip(eventvalue){
+import {
+  createView
+} from "./createView.js"
+
+
+export function pinClip(eventvalue,list) {
   // Parent selector
   const clickedOn = eventvalue.srcElement;
   let tags = eventvalue.target.localName;
 
-  if (tags === "p") {
+
+  if (tags === "p") {// check if the click element is a para
+    // let{pin,unpin} = ;
     // reverse cliplist
-    const reverseClipList = clipList.slice().reverse();
+    const reverseClipList = pinValidation(list).slice().reverse();//[...pin,...unpin];
+    // fetch the position of the element by replacing text
     let clickedOnID = Number(clickedOn.id.replace("clipitem", ""));
     let pinClip = reverseClipList[clickedOnID];
     // Pin and unpin any clip
     clickedOn.className.includes("pinned") ? clickedOn.classList.remove("pinned") : clickedOn.classList.add("pinned");
-    console.log(clipList);
     // Check if an element is pinned if not pin it or remove.
-    if(pinClip.pinned == false){
+    if (pinClip.pinned == false) {
       pinClip.pinned = true
-        // notify("Pin")
-    }else{
+    } else {
       pinClip.pinned = false
-        // notify("Un pin")
     }
-
   }
 
+
+}
+export function pinValidation(clip) {
+  let pinnedList = clip.filter((item) => item.pinned);
+  let unpinnedList = clip.filter((item) => !item.pinned);
+  return [...unpinnedList,...pinnedList]
 }

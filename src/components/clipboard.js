@@ -6,7 +6,7 @@ import {
   intialCoord
 } from "./coordinate.js"
 import {
-  pinClip
+  pinClip,pinValidation
 } from "./Clipboard/pinClip.js"
 import {
   createView
@@ -19,7 +19,17 @@ const footer = document.getElementById("footer");
 const act = document.getElementById("act");
 // const clvl = document.getElementById("clvl");
 let coordinateIndicator = false;
-export let clipList = []; //Set an empty array
+let testArr = [{
+  value: "clip",
+  pinned: false
+},{
+  value: "clip2",
+  pinned: false
+},{
+  value: "clip3",
+  pinned: false
+}]
+export let clipList = [...testArr]; //Set an empty array
 // Check and update the status of coordinate module.
 coordinate.addEventListener("click", (event) => {
   coordinateIndicator = event.srcElement.checked;
@@ -28,7 +38,6 @@ coordinate.addEventListener("click", (event) => {
 export const copyToClipboard = () => {
   let clip = clipboard.readText() //Get the clipboard text\
   const secondLetter = clip.substring(1, 2)
-  // console.log(secondLetter);
   if (coordinateIndicator && clip !== "" && !isNaN(secondLetter)) {
     clip = intialCoord(coordinateIndicator, clip)
     clipboard.writeText(clip);
@@ -47,20 +56,20 @@ export const copyToClipboard = () => {
     })
     if (clipAvbl === false) { //Check if the element exist in the array
       clipList.push(copiedValue) //if not then
-      createView();
-      // console.log(clipList);
+      createView(clipList);
     }
   }
 }
 // Pin event of clipboard
 document.addEventListener("contextmenu", (a) => {
-  pinClip(a)
+  pinClip(a,clipList);
+  createView(clipList);
 });
 // clear clipboard
 clearAllData.addEventListener("click", (a) => {
   clearClipboard(a)
   // Update the UI
-  createView();
+  createView(clipList);
 });
 
 function clearClipboard(eventvalue) {
@@ -73,14 +82,10 @@ function clearClipboard(eventvalue) {
     clipList = [...pinnedClip];
     let revereseClip = [...clipList];
     revereseClip.reverse();
-    console.log(clipList);
-    console.log(revereseClip);
-    // console.log();
     clipboard.writeText(revereseClip[0].value); //Nothing is copied
   }else{
     clipList = [];
     clipboard.writeText(""); //Nothing is copied
-    // console.log(clipList);
   }
 
 }

@@ -228,5 +228,6 @@ label {
 .copyright{
   color: #8ECAFF;
   padding: 1rem;
+  padding-block-end: 0;
   font-size: 9px;
 }
