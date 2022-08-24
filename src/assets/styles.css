@@ -19,6 +19,9 @@ body {
   margin: auto;
   font-family: robomed;
   background-color: #EAF2F9;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
 }
 
 body, h1 {
@@ -58,6 +61,7 @@ h3, p, span, div, input {
 
 .main {
   padding-inline: 0.7rem;
+  flex:1;
 }
 
 .heading {
@@ -219,7 +223,7 @@ label {
   border-radius: 5px 0 0 5px;
 }
 .footer{
-  position: absolute;
+  /* position: absolute; */
   bottom: 0;
   width: 100%;
   text-align: center;

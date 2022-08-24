@@ -29,7 +29,7 @@ let testArr = [{
   value: "clip3",
   pinned: false
 }]
-export let clipList = [...testArr]; //Set an empty array
+export let clipList = []; //Set an empty array
 // Check and update the status of coordinate module.
 coordinate.addEventListener("click", (event) => {
   coordinateIndicator = event.srcElement.checked;
