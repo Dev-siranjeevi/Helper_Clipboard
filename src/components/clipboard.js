@@ -37,6 +37,7 @@ coordinate.addEventListener("click", (event) => {
 
 export const copyToClipboard = () => {
   let clip = clipboard.readText() //Get the clipboard text\
+
   const secondLetter = clip.substring(1, 2)
   if (coordinateIndicator && clip !== "" && !isNaN(secondLetter)) {
     clip = intialCoord(coordinateIndicator, clip)
