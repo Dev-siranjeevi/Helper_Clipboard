@@ -1,0 +1,227 @@
+/* Setting fonts */
+@font-face {
+  font-family: robomed;
+  src: url(fonts/Poppins-Medium.ttf);
+}
+
+@font-face {
+  font-family: robothin;
+  src: url(fonts/Poppins-Regular.ttf);
+}
+
+/* Setting custom attributes */
+:root {
+  /* Distance */
+  --switch-slider: 12px;
+  --switch-slider-translate: 20px;
+  --switch-postion: 4px;
+  /* Header */
+  --tle-h1: 1rem;
+  /* module */
+  --mod-h2: 0.75rem;
+  --mod-clr-h2: #5F5F5F;
+  /* Color */
+  --clr-bg-lgt: #F4F4F4;
+  --clr-pri: #2F9CFC;
+  --clr-default-btn: #B4B3B3;
+  --higlight-clr: #A10035;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--clr-bg-lgt);
+  /* overflow: hidden; */
+}
+
+.body {
+  margin: 13px 14px;
+  /* height: 100vh; */
+  font-family: robomed;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+/* general */
+.fl {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Additionl conditions */
+.noselect {
+  -webkit-user-select: none;
+}
+
+.drag {
+  -webkit-app-region: drag;
+}
+
+.no-drag {
+  -webkit-app-region: no-drag;
+}
+
+/* Scroller */
+/* width */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--clr-default-btn);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--clr-pri);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #8ECAFF;
+}
+
+/* body */
+/* header */
+.title {
+  color: var(--clr-pri);
+  font-size: var(--tle-h1);
+}
+
+.btn-default path {
+  fill: var(--clr-default-btn);
+}
+
+.nav {
+  gap: 14px;
+}
+
+/* Module */
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: var(--switch-slider);
+  width: var(--switch-slider);
+  left: var(--switch-postion);
+  bottom: var(--switch-postion);
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked+.slider {
+  background-color: var(--clr-pri);
+}
+
+input:focus+.slider {
+  box-shadow: 0 0 1px var(--clr-pri);
+}
+
+input:checked+.slider:before {
+  -webkit-transform: translateX(var(--switch-slider-translate));
+  -ms-transform: translateX(var(--switch-slider-translate));
+  transform: translateX(var(--switch-slider-translate));
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 24px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.module {
+  letter-spacing: 0.08rem;
+}
+
+.module, .clips {
+  font-size: var(--mod-h2);
+  color: var(--mod-clr-h2);
+}
+
+/* clips */
+.clips {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  /* padding-inline-end: 4px; */
+  /* height: 90vh; */
+  /* overflow-y: scroll; */
+}
+
+.clip {
+  border-radius: 0.625rem;
+  background-color: #FFF;
+  padding: 0.625rem;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.clipAction {
+  display: flex;
+  gap: 14px;
+}
+
+.timeline {
+  color: #B4B3B3;
+}
+.copy:hover path,.pin:hover path {
+  fill: var(--clr-pri);
+}
+
+.delete-single:hover path{
+  fill: var(--higlight-clr);
+}
+
+.footer {
+  /* position: absolute; */
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  /* transform: translate(50%, 0); */
+}
+
+.copyright {
+  color: var(--clr-pri);
+  padding: 1rem;
+  padding-block-end: 0;
+  font-size: 9px;
+}

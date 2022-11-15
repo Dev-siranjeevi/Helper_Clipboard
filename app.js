@@ -7,6 +7,7 @@ const path = require('path')
 const createWindow = () => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
+    alwaysOnTop: true,
     width: 250,
     height: 400,
     maxWidth:250,
@@ -22,7 +23,7 @@ const createWindow = () => {
   })
 
   // and load the index.html of the app.
-  mainWindow.loadFile('./src/index.html')
+  mainWindow.loadFile('./src/indexNewUI.html')
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()

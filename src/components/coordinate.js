@@ -70,11 +70,12 @@ export function intialCoord(active, val) {
     }
 
   }
+
+  // Active status
+  console.log(`Coordinate module active: ${document.querySelector(".switch-inp").checked}`);
 }
 
-function validateLong(){
 
-}
 function separatorCoord(coor) {
   let remSeparator = coor.replace(/,|·/g, "."); // remove from decimal places
   remSeparator = (remSeparator.replace(/,|°|’|-|'|”|:|"|'/g, "")).replace(/ /g, ""); // remove all the separators // Fill the separator between /  /.

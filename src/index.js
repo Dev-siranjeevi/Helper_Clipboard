@@ -42,3 +42,10 @@ function action(a, attr) {
     }, 1500);
   }
 }
+
+// const coordmodule = document.querySelector(".switch-inp");
+//
+// coordmodule.addEventListener("change",()=>{
+//   // Activate the coordinate module.
+//
+// })
