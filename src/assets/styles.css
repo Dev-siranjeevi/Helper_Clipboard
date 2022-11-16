@@ -43,12 +43,13 @@ body {
   font-family: robomed;
   display: flex;
   flex-direction: column;
+  gap: 12px;
 }
 
 /* general */
 .fl {
   display: flex;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   flex-wrap: wrap;
 }
 .fl-spbtw{
@@ -169,7 +170,10 @@ input:checked+.slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
-
+.modules{
+  gap: 12px;
+  align-items: center; 
+}
 .module {
   letter-spacing: 0.08rem;
 }
@@ -181,7 +185,6 @@ input:checked+.slider:before {
 
 /* clips */
 .clips {
-  display: flex;
   flex-direction: column;
   gap: 11px;
 }
