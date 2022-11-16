@@ -7,6 +7,7 @@ const path = require('path')
 const createWindow = () => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
+    // alwaysOnTop: true,
     width: 250,
     height: 400,
     maxWidth:250,

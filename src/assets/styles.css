@@ -1,3 +1,4 @@
+/* Setting fonts */
 @font-face {
   font-family: robomed;
   src: url(fonts/Poppins-Medium.ttf);
@@ -8,27 +9,53 @@
   src: url(fonts/Poppins-Regular.ttf);
 }
 
+/* Setting custom attributes */
 :root {
-  --main-bg-color: #d1d9dc;
-  --section-bg-color: white;
+  /* Distance */
+  --switch-slider: 12px;
+  --switch-slider-translate: 20px;
+  --switch-postion: 4px;
+  /* Header */
+  --tle-h1: 1rem;
+  /* module */
+  --mod-h2: 0.75rem;
+  --mod-clr-h2: #5F5F5F;
+  /* Color */
+  --clr-bg-lgt: #F4F4F4;
+  --clr-pri: #2F9CFC;
+  --clr-default-btn: #B4B3B3;
   --higlight-clr: #A10035;
-  --tle-clr: #2F9CFC;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  margin: auto;
+  background-color: var(--clr-bg-lgt);
+}
+
+.body {
+  margin: 13px 14px;
+  /* height: 100vh; */
   font-family: robomed;
-  background-color: #EAF2F9;
-  height: 400px;
   display: flex;
   flex-direction: column;
 }
 
-body, h1 {
-  outline: none;
-  border: 0;
-  /* background-color: var(--main-bg-color); */
+/* general */
+.fl {
+  display: flex;
+  border: 1px solid black;
+  flex-wrap: wrap;
 }
+.fl-spbtw{
+  justify-content: space-between;
+  align-items: center;
+}
+
 
 /* Additionl conditions */
 .noselect {
@@ -43,154 +70,6 @@ body, h1 {
   -webkit-app-region: no-drag;
 }
 
-.bg {
-  /* The image used */
-  /* background-image: url("icons/bg-img.jpg"); */
-  /* Full height */
-  /* height: 100%; */
-  /* Center and scale the image nicely */
-  /* background-position: center;
-  background-repeat: no-repeat; */
-  /* background-size: cover; */
-}
-
-h3, p, span, div, input {
-  margin: 0;
-  padding: 0;
-}
-
-.main {
-  padding-inline: 0.7rem;
-  flex:1;
-}
-
-.heading {
-  background-color: #fff;
-  height: 2rem;
-  border-radius: 0px 0px 10px 10px;
-}
-
-.tle-clr {
-  color: var(--tle-clr);
-}
-
-.space-btw {
-  padding-inline: 0.7rem;
-  padding-block: 0.5rem;
-}
-
-.flex {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-button {
-  background-color: #fff;
-  border: none;
-  outline: none;
-}
-
-.clr, .chk {
-  width: 16px;
-  height: 18px;
-}
-
-.clr:hover>path {
-  fill: var(--higlight-clr);
-}
-
-/* Titles and subtitle */
-.coord {
-  align-content: center;
-}
-
-.sub {
-  display: flex;
-  align-items: center;
-}
-
-.chk {
-  padding-left: 0.5rem;
-}
-
-input {
-  margin-right: 6px;
-  width: 18px;
-  height: 18px;
-}
-
-input:checked+span {
-  color: var(--higlight-clr);
-  border-bottom: 2px solid var(--higlight-clr);
-}
-
-p, span {
-  font-size: 13px;
-  word-wrap: break-word;
-  font-family: robothin;
-}
-
-
-label {
-  user-select: none;
-  text-align: center;
-}
-
-/* Body */
-#mainBody {
-  margin-block: 4px;
-  padding-inline: 0;
-}
-
-#mainBody>div {
-  margin-block: 10px;
-}
-
-.clipboard {
-  background-color: var(--section-bg-color);
-  border-radius: 5px;
-  padding: 6px;
-  cursor: pointer;
-  position: relative;
-  user-select: none;
-
-}
-
-.hov::after{
-  content: '';
-  bottom: 0;
-  left: 0;
-  position: absolute;
-  width: 100%;
-  height: 2px;
-  background-color: var(--tle-clr);
-  transform: scale(0);
-  transform-origin: right;
-  transition: transform 1s ease-in;
-}
-.hov:hover::after{
-  transform: scale(1);
-  transform-origin: left;
-}
-.copied{
-  border: 2px dashed var(--tle-clr);
-  /* transition: border 2s ease-in; */
-}
-.copied::before{
-  content: 'Copied';
-  position: absolute;
-  top: 0;
-  right: 0;
-  transform: translate(0, -50%);
-  color: #fff;
-  background-color: var(--tle-clr);
-  padding: 4px;
-  border-radius: 4px;
-  transition: display 1s ease-in;
-  /* z-index: 1; */
-}
-
 /* Scroller */
 /* width */
 ::-webkit-scrollbar {
@@ -199,12 +78,12 @@ label {
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: rgba(48, 71, 75, 0.46);
+  background: var(--clr-default-btn);
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: var(--tle-clr);
+  background: var(--clr-pri);
 }
 
 /* Handle on hover */
@@ -212,25 +91,134 @@ label {
   background: #8ECAFF;
 }
 
-/* Body */
-#mainBody p {
-  margin-block: 6px;
+/* body */
+/* header */
+.title {
+  color: var(--clr-pri);
+  font-size: var(--tle-h1);
 }
 
-/* Pin action highlight */
-.pinned {
-  border-right: 4px solid #A10035;
-  border-radius: 5px 0 0 5px;
+.btn-default path {
+  fill: var(--clr-default-btn);
 }
-.footer{
-  /* position: absolute; */
+
+.nav {
+  gap: 12px;
+}
+
+/* Module */
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
   bottom: 0;
-  width: 100%;
-  text-align: center;
-  /* transform: translate(50%, 0); */
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
 }
-.copyright{
-  color: #8ECAFF;
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: var(--switch-slider);
+  width: var(--switch-slider);
+  left: var(--switch-postion);
+  bottom: var(--switch-postion);
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked+.slider {
+  background-color: var(--clr-pri);
+}
+
+input:focus+.slider {
+  box-shadow: 0 0 1px var(--clr-pri);
+}
+
+input:checked+.slider:before {
+  -webkit-transform: translateX(var(--switch-slider-translate));
+  -ms-transform: translateX(var(--switch-slider-translate));
+  transform: translateX(var(--switch-slider-translate));
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 24px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.module {
+  letter-spacing: 0.08rem;
+}
+
+.module, .clips {
+  font-size: var(--mod-h2);
+  color: var(--mod-clr-h2);
+}
+
+/* clips */
+.clips {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+.clip {
+  border-radius: 0.625rem;
+  background-color: #FFF;
+  padding: 0.625rem;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.clipAction {
+  display: flex;
+  gap: 14px;
+}
+
+.timeline {
+  color: #B4B3B3;
+}
+
+.copy:hover path, .pin:hover path {
+  fill: var(--clr-pri);
+}
+
+.delete-single:hover path {
+  fill: var(--higlight-clr);
+}
+
+.footer {
+  justify-content: center;
+  text-align: center;
+}
+
+.copyright {
+  color: var(--clr-pri);
   padding: 1rem;
   padding-block-end: 0;
   font-size: 9px;
