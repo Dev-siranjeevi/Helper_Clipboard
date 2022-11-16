@@ -25,6 +25,9 @@
   --clr-pri: #2F9CFC;
   --clr-default-btn: #B4B3B3;
   --higlight-clr: #A10035;
+  --clr-copied: #8FE3CF;
+  /* scrollbar */
+  --clr-scroll-hght: #8ECAFF;
 }
 
 * {
@@ -52,11 +55,11 @@ body {
   /* border: 1px solid black; */
   flex-wrap: wrap;
 }
-.fl-spbtw{
+
+.fl-spbtw {
   justify-content: space-between;
   align-items: center;
 }
-
 
 /* Additionl conditions */
 .noselect {
@@ -89,7 +92,7 @@ body {
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #8ECAFF;
+  background: var(--clr-scroll-hght);
 }
 
 /* body */
@@ -170,10 +173,12 @@ input:checked+.slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
-.modules{
+
+.modules {
   gap: 12px;
-  align-items: center; 
+  align-items: center;
 }
+
 .module {
   letter-spacing: 0.08rem;
 }
@@ -196,19 +201,36 @@ input:checked+.slider:before {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  width: 225px;
+  word-wrap: break-word;
 }
 
 .clipAction {
-  display: flex;
-  gap: 14px;
+  /* display: flex; */
+}
+
+path {
+  transition: 1s all;
 }
 
 .timeline {
   color: #B4B3B3;
 }
 
-.copy:hover path, .pin:hover path {
+.copy:hover path{
+  fill: var(--clr-copied);
+}
+
+.pin:hover path{
   fill: var(--clr-pri);
+}
+
+.pinactive path {
+  fill: var(--clr-pri);
+}
+
+.copy-el path {
+  fill: var(--clr-copied);
 }
 
 .delete-single:hover path {
@@ -225,4 +247,8 @@ input:checked+.slider:before {
   padding: 1rem;
   padding-block-end: 0;
   font-size: 9px;
+}
+
+.btn {
+  padding: 8px;
 }

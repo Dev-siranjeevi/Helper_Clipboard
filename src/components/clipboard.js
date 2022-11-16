@@ -39,7 +39,7 @@ export let clipList = []; //Set an empty array
 // Check and update the status of coordinate module.
 coordinate.addEventListener("change", (event) => {
   coordinateIndicator = event.srcElement.checked;
-  console.log(coordinateIndicator);
+  
 });
 
 export const copyToClipboard = () => {
@@ -69,24 +69,38 @@ export const copyToClipboard = () => {
     }
   }
 }
-
-document.querySelector(".clips").addEventListener("click", (e) => {
-  let clicked = e.path[1].id;
-
-  if(clicked !== ""){
+window.addEventListener("load", (event) => {
+  document.querySelector(".clips").addEventListener("click", (e) => {
+    let clicked = e.path[1].id;
     console.log(clicked);
-  }else{
-    console.log("Nothing has been clicked");
-  }
 
-})
+    if (clicked !== "") {
+      if (clicked.includes("copy")) {
+        copyElement(clipList, clicked);
+      } else if (clicked.includes("pin")) {
+        pinElement(clipList, clicked);
+        createView(clipList);
+      } else if (clicked.includes("del")) {
+        delElement(clipList, clicked);
+        createView(clipList);
+      }
+
+    } else {
+      console.log("Nothing has been clicked");
+    }
+
+  })
+});
 // Pin event of clipboard
-
-
 // clear clipboard
 clearAllData.addEventListener("click", (a) => {
   clearClipboard(a)
   // Update the UI
+  clipList.push({
+    value: "A example of clip element",
+    time: new Date().toLocaleTimeString(), //new Date().toLocaleDateString() +
+    pinned: false
+  })
   createView(clipList);
 });
 
@@ -105,5 +119,44 @@ function clearClipboard(eventvalue) {
     clipList = [];
     clipboard.writeText(""); //Nothing is copied
   }
+}
 
+function pinElement(list, element) {
+  const postion = element.replace("pin", "");
+  let prior = pinValidation(list).slice().reverse();
+  let pinStatus = prior[postion].pinned;
+  prior[postion].pinned = !pinStatus;
+  console.log(prior);
+
+  const clickedOn = document.getElementById(element);
+  clickedOn.className.baseVal.includes("pinactive") ? clickedOn.classList.remove("pinactive") : clickedOn.classList.add("pinactive");
+
+}
+
+function delElement(list, element) {
+  const postion = element.replace("del", "");
+  let prior = pinValidation(list).slice().reverse();
+
+  const clipDel = prior[postion].value;
+
+  const newPrior = prior.filter((clip) => {
+    return clip.value != clipDel
+  })
+
+  clipList = pinValidation(newPrior).slice().reverse();
+  clipboard.writeText("");
+}
+
+function copyElement(list, element) {
+  const postion = element.replace("copy", "");
+  let prior = list.slice().reverse();
+
+  const clipDel = prior[postion].value;
+  clipboard.writeText(clipDel);
+
+  let copiedText = document.querySelector(`#${element}`);
+  copiedText.classList.add("copy-el");
+  setTimeout(()=>{
+    copiedText.classList.remove("copy-el");
+  }, 2000);
 }
