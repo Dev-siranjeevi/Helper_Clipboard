@@ -20,7 +20,7 @@ const createWindow = () => {
       nodeIntegration: true,
       contextIsolation: false,
     }
-  })
+    })
 
   // and load the index.html of the app.
   console.log(__dirname +'/src/index.html');

@@ -8,7 +8,11 @@
   font-family: robothin;
   src: url(fonts/Poppins-Regular.ttf);
 }
-
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 /* Setting custom attributes */
 :root {
   /* Distance */
@@ -18,7 +22,7 @@
   /* Header */
   --tle-h1: 1rem;
   /* module */
-  --mod-h2: 0.75rem;
+  --mod-h2: 0.8rem;
   --mod-clr-h2: #5F5F5F;
   /* Color */
   --clr-bg-lgt: #F4F4F4;
@@ -30,10 +34,56 @@
   --clr-scroll-hght: #8ECAFF;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+
+@media (prefers-color-scheme: dark) {
+  /* Setting custom attributes */
+  :root {
+    /* Distance */
+    --switch-slider: 12px;
+    --switch-slider-translate: 20px;
+    --switch-postion: 4px;
+    /* Header */
+    --tle-h1: 1rem;
+    /* module */
+    --mod-h2: 0.8rem;
+    --mod-clr-h2: #B4B3B3;
+    /* Color */
+    --clr-bg-lgt: #2C2B2B;
+    --clr-card: #5F5F5F;
+    --clr-pri: #2F9CFC;
+    --clr-default-btn: #B4B3B3;
+    --higlight-clr: #EB4747;
+    --clr-copied: #8FE3CF;
+    /* scrollbar */
+    --clr-scroll-hght: #8ECAFF;
+  }
+  .content-val{
+    color: #FFF;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  /* Setting custom attributes */
+  :root {
+    /* Distance */
+    --switch-slider: 12px;
+    --switch-slider-translate: 20px;
+    --switch-postion: 4px;
+    /* Header */
+    --tle-h1: 1rem;
+    /* module */
+    --mod-h2: 0.8rem;
+    --mod-clr-h2: #5F5F5F;
+    /* Color */
+    --clr-bg-lgt: #F4F4F4;
+    --clr-card: #fff;
+    --clr-pri: #2F9CFC;
+    --clr-default-btn: #B4B3B3;
+    --higlight-clr: #A10035;
+    --clr-copied: #8FE3CF;
+    /* scrollbar */
+    --clr-scroll-hght: #8ECAFF;
+  }
 }
 
 body {
@@ -101,7 +151,9 @@ body {
   color: var(--clr-pri);
   font-size: var(--tle-h1);
 }
-
+.light-dark{
+  gap:4px;
+}
 .btn-default path {
   fill: var(--clr-default-btn);
 }
@@ -120,7 +172,7 @@ body {
 }
 
 /* Hide default HTML checkbox */
-.switch input {
+.switch input,.mode input {
   opacity: 0;
   width: 0;
   height: 0;
@@ -184,6 +236,7 @@ input:checked+.slider:before {
 }
 
 .module, .clips {
+  font-family: robothin;
   font-size: var(--mod-h2);
   color: var(--mod-clr-h2);
 }
@@ -196,7 +249,7 @@ input:checked+.slider:before {
 
 .clip {
   border-radius: 0.625rem;
-  background-color: #FFF;
+  background-color: var(--clr-card);
   padding: 0.625rem;
   display: flex;
   flex-direction: column;
@@ -215,6 +268,7 @@ path {
 
 .timeline {
   color: #B4B3B3;
+  font-size: 0.75rem;
 }
 
 .copy:hover path{
