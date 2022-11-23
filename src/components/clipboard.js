@@ -1,6 +1,7 @@
 const {
   ipcRenderer,
-  clipboard
+  clipboard,
+  nativeTheme
 } = require("electron");
 import {
   intialCoord
@@ -67,7 +68,6 @@ const copyToClipboard = () => {
       createView(clipList);
     }
   }
-  // console.log(clipList);
 }
 // *******************************************************PRIOTIZE OR PIN SPECIFIC DATA TO TOP OF THE LIST************************************ ******//
 function pinClicks(eventReturn) {
