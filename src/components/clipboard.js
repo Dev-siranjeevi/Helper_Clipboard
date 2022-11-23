@@ -54,6 +54,7 @@ const copyToClipboard = () => {
       time: new Date().toLocaleTimeString(), //new Date().toLocaleDateString() +
       pinned: false
     }
+    if(clipList.length == 1 && clipList[0].value == "A example of clip element") clipList=[];
     let clipAvbl = false;
     clipList.forEach((val) => {
 

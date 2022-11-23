@@ -13,10 +13,10 @@ const createWindow = () => {
   const mainWindow_Options = {
     // alwaysOnTop: true,
     width: 250,
-    height: 400,
-    maxWidth : 250,
+    height: 500,
+    maxWidth: 250,
     minWidth: 250,
-    minHeight: 400,
+    minHeight: 500,
     frame: false,
     // transparent:true,
     icon: path.join(__dirname, '/assets/icons/appIcon.ico'),
@@ -60,8 +60,11 @@ app.whenReady().then(() => {
 
 })
 // Mesaging btw:
-ipcMain.on("Update-Application-position",(event,arg)=>{
+ipcMain.on("Update-Application-position", (event, arg) => {
   mainWindow.movable ? mainWindow.movable = false : mainWindow.movable = true;
+})
+ipcMain.on("Update-Application-layer", (event, arg) => {
+  mainWindow.isAlwaysOnTop() ? mainWindow.setAlwaysOnTop (false ): mainWindow.setAlwaysOnTop(true) ;
 })
 // Quit when all windows are closed, except on macOS. There, it's common
 // for applications and their menu bar to stay active until the user quits

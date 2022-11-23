@@ -92,7 +92,6 @@ body {
 
 .body {
   margin: 13px 14px;
-  /* height: 100vh; */
   font-family: robomed;
   display: flex;
   flex-direction: column;
@@ -160,6 +159,9 @@ body {
 
 .nav {
   gap: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Module */

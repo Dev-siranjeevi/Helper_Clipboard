@@ -18,3 +18,10 @@ pinApplication.addEventListener("click", () => {
   // Set styling
   pinApplication.className.baseVal.includes("pinactive") ? pinApplication.classList.remove("pinactive") : pinApplication.classList.add("pinactive");
 })
+
+const alwaysOntop = document.querySelector('#layer');
+alwaysOntop.addEventListener("click", () => {
+  ipcRenderer.send("Update-Application-layer", "Toogle Applications mobility");
+  // Set styling
+  alwaysOntop.className.baseVal.includes("pinactive") ? alwaysOntop.classList.remove("pinactive") : alwaysOntop.classList.add("pinactive");
+})
