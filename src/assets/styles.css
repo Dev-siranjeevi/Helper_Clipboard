@@ -149,6 +149,7 @@ body {
 .title {
   color: var(--clr-pri);
   font-size: var(--tle-h1);
+  letter-spacing: 2px;
 }
 .light-dark{
   gap:4px;
@@ -235,6 +236,7 @@ input:checked+.slider:before {
 
 .module {
   letter-spacing: 0.08rem;
+  font-weight: 400;
 }
 
 .module, .clips {
