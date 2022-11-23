@@ -10,7 +10,7 @@
 
 let direction = ["N", "S", "E", "W"];
 let gsdir = "";
-export function intialCoord(active, val) {
+function intialCoord(active, val) {
   const coordCopied = val;
   const coordLeng = val.length;
   if (active) { //If coordinate is on then follow the module
@@ -72,12 +72,11 @@ export function intialCoord(active, val) {
   }
 }
 
-function validateLong(){
-
-}
 function separatorCoord(coor) {
   let remSeparator = coor.replace(/,|·/g, "."); // remove from decimal places
   remSeparator = (remSeparator.replace(/,|°|’|-|'|”|:|"|'/g, "")).replace(/ /g, ""); // remove all the separators // Fill the separator between /  /.
   // console.log(remSeparator);
   return remSeparator;
 }
+
+export {intialCoord}

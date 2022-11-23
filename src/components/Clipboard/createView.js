@@ -1,10 +1,11 @@
 // function checkerA(ar)
 import {
-  clipList
+  clipList,
+  copyClicks,
+  pinClicks,
+  deletClicks
 } from "../clipboard.js"
-import {
-  pinValidation
-} from "./pinClip.js"
+
 export const createView = (list) => {
   let prev = document.querySelectorAll(".clip");
   // console.log(prev);
@@ -21,16 +22,36 @@ export const createView = (list) => {
   }
 
   // create a new div with same id and loop through the array.clipboard
-  let prior = pinValidation(list).slice().reverse();
+  let prior = list.slice().reverse();
+  prior.sort((crr, nxt) => {
+    return nxt.pinned - crr.pinned
+  });
+  console.log(prior);
   prior.forEach((clip, index) => {
     // console.log(index);
-    clips.insertAdjacentHTML('beforeend', clipView(clip.value, clip.time, index,clip.pinned));
+    clips.insertAdjacentHTML('beforeend', clipView(clip.value, clip.time, index, clip.pinned));
+  })
+addEventsClip()
+}
+const addEventsClip = ()=>{
+  const copyClips = document.querySelectorAll(".copy");
+  const pinClips = document.querySelectorAll(".pin");
+  const deleteClips = document.querySelectorAll(".delete-single");
+
+  copyClips.forEach((copy) => {
+    copy.addEventListener("click", copyClicks)
+  })
+
+  pinClips.forEach((pin) => {
+    pin.addEventListener("click", pinClicks);
+  })
+  deleteClips.forEach((del) => {
+    del.addEventListener("click", deletClicks);
   })
 }
 
 const clips = document.querySelector(".clips");
-
-let clipView = (data, time, postion,pinstatus) => {
+let clipView = (data, time, postion, pinstatus) => {
 
   const clip = `<div class="clip">
         <!-- Clip value -->

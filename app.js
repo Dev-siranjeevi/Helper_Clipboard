@@ -1,30 +1,39 @@
-// main.js
-
 // Modules to control application life and create native browser window
-const { app, BrowserWindow, ipcMain } = require('electron')
+const {
+  app,
+  BrowserWindow,
+  ipcMain,
+  globalShortcut
+} = require('electron')
 const path = require('path')
-
+const url = require('url')
+let mainWindow;
 const createWindow = () => {
   // Create the browser window.
-  const mainWindow = new BrowserWindow({
+  const mainWindow_Options = {
     // alwaysOnTop: true,
     width: 250,
     height: 400,
-    maxWidth:250,
-    minWidth:200,
+    maxWidth : 250,
+    minWidth: 250,
     minHeight: 400,
-    frame:false,
+    frame: false,
     // transparent:true,
     icon: path.join(__dirname, '/assets/icons/appIcon.ico'),
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
     }
-    })
-
+  }
+  const appURL = {
+    pathname: path.join(__dirname + '/src/index.html'),
+    slashes: true,
+    protocal: "file:/"
+  }
+  // Create mainWindow
+  mainWindow = new BrowserWindow(mainWindow_Options)
   // and load the index.html of the app.
-  console.log(__dirname +'/src/index.html');
-  mainWindow.loadFile(__dirname +'/src/index.html')
+  mainWindow.loadURL(url.format(appURL))
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
@@ -36,14 +45,24 @@ const createWindow = () => {
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
   createWindow()
+  // // Register a 'CommandOrControl+Y' shortcut listener.
+  // globalShortcut.register('Alt+V', () => {
+  //   // Do stuff when Y and either Command/Control is pressed.
+  //
+  //   mainWindow.movable ? mainWindow.movable = false : mainWindow.movable = true;
+  // })
 
   app.on('activate', () => {
     // On macOS it's common to re-create a window in the app when the
     // dock icon is clicked and there are no other windows open.
     if (BrowserWindow.getAllWindows().length === 0) createWindow()
   })
-})
 
+})
+// Mesaging btw:
+ipcMain.on("Update-Application-position",(event,arg)=>{
+  mainWindow.movable ? mainWindow.movable = false : mainWindow.movable = true;
+})
 // Quit when all windows are closed, except on macOS. There, it's common
 // for applications and their menu bar to stay active until the user quits
 // explicitly with Cmd + Q.

@@ -287,7 +287,7 @@ path {
   fill: var(--clr-copied);
 }
 
-.delete-single:hover path {
+.delete-single:hover path,.delAllClip:hover path{
   fill: var(--higlight-clr);
 }
 

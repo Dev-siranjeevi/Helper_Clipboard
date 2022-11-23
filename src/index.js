@@ -7,38 +7,14 @@ import {
   copyToClipboard,
   clipList
 } from "./components/clipboard.js"
-import {
-  pinValidation
-} from "./components/Clipboard/pinClip.js"
-setInterval(copyToClipboard, 500); //Run it ever 500 ms
-//
-// // copy element
-// document.addEventListener("click", (a) => {
-//   action(a, "Copied")
-// })
-//
-function action(a, attr) {
-  const clickedOn = a.srcElement;
-  let tags = a.target.localName;
-  let indexofclip = a.srcElement.id.replace("clipitem", "");
-  // console.log(indexofclip);
-  let writeToClip;
 
-  if (tags === "p") {
+setInterval(() => {
+  copyToClipboard();
+}, 800); //Run it ever 500 ms
 
-    if (clipList.length > 0) {
-      let prior = pinValidation(clipList).slice().reverse();
-      writeToClip = prior[Number(indexofclip)].value;
-    }
-
-    console.log(writeToClip);
-    clipboard.writeText(writeToClip);
-    // console.log(clipList);
-    clickedOn.classList.add("copied");
-    clickedOn.classList.remove("hov");
-    setTimeout(() => {
-      clickedOn.classList.remove("copied");
-      clickedOn.classList.add("hov");
-    }, 1500);
-  }
-}
+const pinApplication = document.querySelector('#move');
+pinApplication.addEventListener("click", () => {
+  ipcRenderer.send("Update-Application-position", "Toogle Applications mobility");
+  // Set styling
+  pinApplication.className.baseVal.includes("pinactive") ? pinApplication.classList.remove("pinactive") : pinApplication.classList.add("pinactive");
+})
