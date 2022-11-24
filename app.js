@@ -16,7 +16,7 @@ const createWindow = () => {
     height: 500,
     maxWidth: 250,
     minWidth: 250,
-    minHeight: 500,
+    maxHeight: 500,
     frame: false,
     // transparent:true,
     icon: path.join(__dirname, '/assets/icons/appIcon.ico'),
