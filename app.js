@@ -40,7 +40,7 @@ const createWindow = () => {
     roundedCorners: true,
   };
   const preloadURL = {
-    pathname: path.join(__dirname + "/src/preloader/loading.html"),
+    pathname: path.join(__dirname + "/src/components/preloader/loading.html"),
     slashes: true,
     protocal: "file:/",
   };

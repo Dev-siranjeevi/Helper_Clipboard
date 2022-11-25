@@ -1,17 +1,17 @@
 /* Setting fonts */
 @font-face {
   font-family: robomed;
-  src: url(../assets/fonts/Poppins-Medium.ttf);
+  src: url(../../assets/fonts/Poppins-Medium.ttf);
 }
 
 :root {
-  --clr-bg-lgt: #F4F4F4;
-  --clr-pri: #2F9CFC;
-  --clr-default-btn: #B4B3B3;
-  --higlight-clr: #A10035;
-  --clr-copied: #8FE3CF;
+  --clr-bg-lgt: #f4f4f4;
+  --clr-pri: #2f9cfc;
+  --clr-default-btn: #b4b3b3;
+  --higlight-clr: #a10035;
+  --clr-copied: #8fe3cf;
   /* scrollbar */
-  --clr-scroll-hght: #8ECAFF;
+  --clr-scroll-hght: #8ecaff;
 }
 
 * {
@@ -62,11 +62,14 @@ h2::before {
 }
 
 @keyframes animate {
-  0%, 10%, 100% {
+  0%,
+  10%,
+  100% {
     width: 0;
   }
 
-  70%, 90% {
-    width: 100%
+  70%,
+  90% {
+    width: 100%;
   }
 }
