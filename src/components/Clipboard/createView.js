@@ -1,10 +1,5 @@
 // function checkerA(ar)
-import {
-  clipList,
-  copyClicks,
-  pinClicks,
-  deletClicks
-} from "../clipboard.js"
+import { clipList, copyClicks, pinClicks, deletClicks } from "../clipboard.js";
 
 export const createView = (list) => {
   let prev = document.querySelectorAll(".clip");
@@ -13,50 +8,51 @@ export const createView = (list) => {
   try {
     if (prev.length > 0) {
       prev.forEach((exsiting) => {
-        exsiting.remove()
-      })
+        exsiting.remove();
+      });
     }
   } catch (err) {
-
     console.log("Issue in removing");
   }
 
   // create a new div with same id and loop through the array.clipboard
   let prior = list.slice().reverse();
   prior.sort((crr, nxt) => {
-    return nxt.pinned - crr.pinned
+    return nxt.pinned - crr.pinned;
   });
   console.log(prior);
   prior.forEach((clip, index) => {
     // console.log(index);
-    clips.insertAdjacentHTML('beforeend', clipView(clip.value, clip.time, index, clip.pinned));
-  })
-addEventsClip()
-}
-const addEventsClip = ()=>{
-  const copyClips = document.querySelectorAll(".copy");
+    clips.insertAdjacentHTML(
+      "beforeend",
+      clipView(clip.value, clip.time, index, clip.pinned)
+    );
+  });
+  addEventsClip();
+};
+const addEventsClip = () => {
+  const copyClips = document.querySelectorAll(".copies");
   const pinClips = document.querySelectorAll(".pin");
   const deleteClips = document.querySelectorAll(".delete-single");
 
   copyClips.forEach((copy) => {
-    copy.addEventListener("click", copyClicks)
-  })
+    copy.addEventListener("click", copyClicks);
+  });
 
   pinClips.forEach((pin) => {
     pin.addEventListener("click", pinClicks);
-  })
+  });
   deleteClips.forEach((del) => {
     del.addEventListener("click", deletClicks);
-  })
-}
+  });
+};
 
 const clips = document.querySelector(".clips");
 let clipView = (data, time, postion, pinstatus) => {
-
   const clip = `<div class="clip">
         <!-- Clip value -->
-        <div class="content">
-          <p class="content-val noselect">
+        <div class="content copies" id="copies${postion}">
+          <p class="  content-val noselect">
           ${data}
           </p>
         </div>
@@ -75,7 +71,9 @@ let clipView = (data, time, postion, pinstatus) => {
             </span>
 
             <span class="btn fl" >
-              <svg class="btn-default pin ${pinstatus?"pinactive":""}"  id="pin${postion}" width="10" height="15" viewBox="0 0 16 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg class="btn-default pin ${
+                pinstatus ? "pinactive" : ""
+              }"  id="pin${postion}" width="10" height="15" viewBox="0 0 16 21" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M13.7143 0H2.28571C1.02857 0 0.0114288 1.02857 0.0114288 2.28571L0 20.5714L8 17.1429L16 20.5714V2.28571C16 1.02857 14.9714 0 13.7143 0Z" fill="black"/>
               </svg>
             </span>
@@ -87,6 +85,6 @@ let clipView = (data, time, postion, pinstatus) => {
 
           </div>
         </div>
-      </div>`
+      </div>`;
   return clip;
 };
