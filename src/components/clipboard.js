@@ -91,7 +91,10 @@ function pinClicks(eventReturn) {
 
 function copyClicks(eventReturn) {
   const clickedElementID = eventReturn.path[1].id;
-  let copiedText = document.getElementById(clickedElementID);
+  let copiedText = document.getElementById(
+    `copy${clickedElementID.replace("copies", "")}`
+  );
+  console.log(clickedElementID);
   try {
     copiedText.classList.add("copy-el");
     setTimeout(() => {
@@ -104,7 +107,7 @@ function copyClicks(eventReturn) {
   prior.sort((crr, nxt) => {
     return nxt.pinned - crr.pinned;
   });
-  const findandUpdate = prior[clickedElementID.replace("copy", "")];
+  const findandUpdate = prior[clickedElementID.replace("copies", "")];
   // Refresh view.
   clipboard.writeText(findandUpdate.value);
 }

@@ -23,17 +23,16 @@
   --tle-h1: 1rem;
   /* module */
   --mod-h2: 0.8rem;
-  --mod-clr-h2: #5F5F5F;
+  --mod-clr-h2: #5f5f5f;
   /* Color */
-  --clr-bg-lgt: #F4F4F4;
-  --clr-pri: #2F9CFC;
-  --clr-default-btn: #B4B3B3;
-  --higlight-clr: #A10035;
-  --clr-copied: #8FE3CF;
+  --clr-bg-lgt: #f4f4f4;
+  --clr-pri: #2f9cfc;
+  --clr-default-btn: #b4b3b3;
+  --higlight-clr: #a10035;
+  --clr-copied: #8fe3cf;
   /* scrollbar */
-  --clr-scroll-hght: #8ECAFF;
+  --clr-scroll-hght: #8ecaff;
 }
-
 
 @media (prefers-color-scheme: dark) {
   /* Setting custom attributes */
@@ -46,19 +45,19 @@
     --tle-h1: 1rem;
     /* module */
     --mod-h2: 0.8rem;
-    --mod-clr-h2: #B4B3B3;
+    --mod-clr-h2: #b4b3b3;
     /* Color */
-    --clr-bg-lgt: #2C2B2B;
-    --clr-card: #5F5F5F;
-    --clr-pri: #2F9CFC;
-    --clr-default-btn: #B4B3B3;
-    --higlight-clr: #EB4747;
-    --clr-copied: #8FE3CF;
+    --clr-bg-lgt: #2c2b2b;
+    --clr-card: #5f5f5f;
+    --clr-pri: #2f9cfc;
+    --clr-default-btn: #b4b3b3;
+    --higlight-clr: #eb4747;
+    --clr-copied: #8fe3cf;
     /* scrollbar */
-    --clr-scroll-hght: #8ECAFF;
+    --clr-scroll-hght: #8ecaff;
   }
-  .content-val{
-    color: #FFF;
+  .content-val {
+    color: #fff;
   }
 }
 
@@ -73,16 +72,16 @@
     --tle-h1: 1rem;
     /* module */
     --mod-h2: 0.8rem;
-    --mod-clr-h2: #5F5F5F;
+    --mod-clr-h2: #5f5f5f;
     /* Color */
-    --clr-bg-lgt: #F4F4F4;
+    --clr-bg-lgt: #f4f4f4;
     --clr-card: #fff;
-    --clr-pri: #2F9CFC;
-    --clr-default-btn: #B4B3B3;
-    --higlight-clr: #A10035;
-    --clr-copied: #8FE3CF;
+    --clr-pri: #2f9cfc;
+    --clr-default-btn: #b4b3b3;
+    --higlight-clr: #a10035;
+    --clr-copied: #8fe3cf;
     /* scrollbar */
-    --clr-scroll-hght: #8ECAFF;
+    --clr-scroll-hght: #8ecaff;
   }
 }
 
@@ -151,8 +150,8 @@ body {
   font-size: var(--tle-h1);
   letter-spacing: 2px;
 }
-.light-dark{
-  gap:4px;
+.light-dark {
+  gap: 4px;
 }
 .btn-default path {
   fill: var(--clr-default-btn);
@@ -175,7 +174,8 @@ body {
 }
 
 /* Hide default HTML checkbox */
-.switch input,.mode input {
+.switch input,
+.mode input {
   opacity: 0;
   width: 0;
   height: 0;
@@ -190,8 +190,8 @@ body {
   right: 0;
   bottom: 0;
   background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
 .slider:before {
@@ -202,19 +202,19 @@ body {
   left: var(--switch-postion);
   bottom: var(--switch-postion);
   background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
-input:checked+.slider {
+input:checked + .slider {
   background-color: var(--clr-pri);
 }
 
-input:focus+.slider {
+input:focus + .slider {
   box-shadow: 0 0 1px var(--clr-pri);
 }
 
-input:checked+.slider:before {
+input:checked + .slider:before {
   -webkit-transform: translateX(var(--switch-slider-translate));
   -ms-transform: translateX(var(--switch-slider-translate));
   transform: translateX(var(--switch-slider-translate));
@@ -239,7 +239,8 @@ input:checked+.slider:before {
   font-weight: 400;
 }
 
-.module, .clips {
+.module,
+.clips {
   font-family: robothin;
   font-size: var(--mod-h2);
   color: var(--mod-clr-h2);
@@ -271,15 +272,15 @@ path {
 }
 
 .timeline {
-  color: #B4B3B3;
+  color: #b4b3b3;
   font-size: 0.75rem;
 }
 
-.copy:hover path{
+.copies:hover + .action > .clipAction > .btn > .copy path {
   fill: var(--clr-copied);
 }
 
-.pin:hover path{
+.pin:hover path {
   fill: var(--clr-pri);
 }
 
@@ -291,7 +292,8 @@ path {
   fill: var(--clr-copied);
 }
 
-.delete-single:hover path,.delAllClip:hover path{
+.delete-single:hover path,
+.delAllClip:hover path {
   fill: var(--higlight-clr);
 }
 
