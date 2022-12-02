@@ -1,4 +1,3 @@
-
 // [-] copy a coordinate
 // [-] check all the lenght
 // [-] check if dir available if so move it to front
@@ -13,46 +12,56 @@ let gsdir = "";
 function intialCoord(active, val) {
   const coordCopied = val;
   const coordLeng = val.length;
-  if (active) { //If coordinate is on then follow the module
+  if (active) {
+    //If coordinate is on then follow the module
 
     // Check and update the position of the coordinate direction
-    direction.forEach((it) => { // loop through all the direction
+    direction.forEach((it) => {
+      // loop through all the direction
       if (coordCopied.includes(it)) {
-        gsdir = it + coordCopied.replace(it, "") // remove the direction from it location and replace it at as the initial letter.
+        gsdir = it + coordCopied.replace(it, ""); // remove the direction from it location and replace it at as the initial letter.
       }
     });
     // remove all separators
     let nilSepCoord = separatorCoord(gsdir);
-    nilSepCoord = separatorCoord(nilSepCoord)
+    nilSepCoord = separatorCoord(nilSepCoord);
 
     // Get the direction of the coord and split accordingly
     let splitNumdeg = 4;
     let splitNummin = 6;
 
-// **********************Longitude validator***************************************
+    // **********************Longitude validator***************************************
     // First let check if the copied is long
     let directionActive;
 
-    if (nilSepCoord.includes("E") || nilSepCoord.includes("W")) { //Check where if it is long
+    if (nilSepCoord.includes("E") || nilSepCoord.includes("W")) {
+      //Check where if it is long
       const longThree = Number(nilSepCoord.substring(1, splitNumdeg)); // split the first 4 letters and check if the values is <= 180.
 
-      if (nilSepCoord.includes("E")) { //Check where if it is long
-        directionActive = "E"
+      if (nilSepCoord.includes("E")) {
+        //Check where if it is long
+        directionActive = "E";
       } else if (nilSepCoord.includes("W")) {
-        directionActive = "W"
+        directionActive = "W";
       }
-      if (longThree > 180) { // Add "0" as the 2nd character.;
+      if (longThree > 180) {
+        // Add "0" as the 2nd character.;
         const finalUpd = directionActive + "0";
         nilSepCoord = nilSepCoord.replace(directionActive, finalUpd);
       }
     }
-// **********************Coordinate split***************************************
-    if (nilSepCoord.includes("N") || nilSepCoord.includes("S")) { //Check where if it is lattitude
+    // **********************Coordinate split***************************************
+    if (nilSepCoord.includes("N") || nilSepCoord.includes("S")) {
+      //Check where if it is lattitude
       splitNumdeg = 3;
       splitNummin = 5;
     }
 
-    let splitCoord = [nilSepCoord.substring(0, splitNumdeg), nilSepCoord.substring(splitNumdeg, splitNummin), nilSepCoord.substring(splitNummin)];
+    let splitCoord = [
+      nilSepCoord.substring(0, splitNumdeg),
+      nilSepCoord.substring(splitNumdeg, splitNummin),
+      nilSepCoord.substring(splitNummin),
+    ];
 
     if (splitCoord[2].length > 8) {
       // console.log(N40 50 15.733);Nco ns NaN
@@ -68,15 +77,16 @@ function intialCoord(active, val) {
     } else {
       return val;
     }
-
   }
 }
 
 function separatorCoord(coor) {
   let remSeparator = coor.replace(/,|·/g, "."); // remove from decimal places
-  remSeparator = (remSeparator.replace(/,|°|’|-|'|”|:|"|'/g, "")).replace(/ /g, ""); // remove all the separators // Fill the separator between /  /.
+  remSeparator = remSeparator
+    .replace(/,|°|’|-|'|”|:|"|'|º/g, "")
+    .replace(/ /g, ""); // remove all the separators // Fill the separator between /  /.
   // console.log(remSeparator);
   return remSeparator;
 }
 
-export {intialCoord}
+export { intialCoord };

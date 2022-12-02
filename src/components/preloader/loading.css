@@ -1,0 +1,75 @@
+/* Setting fonts */
+@font-face {
+  font-family: robomed;
+  src: url(../../assets/fonts/Poppins-Medium.ttf);
+}
+
+:root {
+  --clr-bg-lgt: #f4f4f4;
+  --clr-pri: #2f9cfc;
+  --clr-default-btn: #b4b3b3;
+  --higlight-clr: #a10035;
+  --clr-copied: #8fe3cf;
+  /* scrollbar */
+  --clr-scroll-hght: #8ecaff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  /* background: var(--clr-scroll-hght); */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+div {
+  width: 100%;
+  height: 100vh;
+  background: var(--clr-scroll-hght);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h2 {
+  font-family: robomed;
+  position: relative;
+  color: var(--clr-scroll-hght);
+  font-size: 8vw;
+  /* -webkit-text-stroke: 0.05vw var( --clr-default-btn); */
+  text-transform: uppercase;
+  letter-spacing: 4px;
+}
+
+h2::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  color: var(--clr-pri);
+  -webkit-text-stroke: 0.05vw var(--clr-pri);
+  border-right: 2px solid var(--clr-pri);
+  overflow: hidden;
+  animation: animate 6s linear infinite;
+}
+
+@keyframes animate {
+  0%,
+  10%,
+  100% {
+    width: 0;
+  }
+
+  70%,
+  90% {
+    width: 100%;
+  }
+}

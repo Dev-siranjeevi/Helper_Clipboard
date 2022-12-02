@@ -28,7 +28,7 @@ let testArr = [
   },
 ];
 
-let clipList = [...testArr]; //Set an empty array
+let clipList = []; //Set an empty array
 // *******************************************************TOGGLING COORDINATE MODULE***********************************************************************//
 
 // Check and update the status of coordinate module.
@@ -116,11 +116,20 @@ function copyClicks(eventReturn) {
 clearAllData.addEventListener("click", (a) => {
   clearClipboard(a);
   // Update the UI
+<<<<<<< HEAD
   clipList.push({
     value: "A example of clip element",
     time: new Date().toLocaleTimeString(), //new Date().toLocaleDateString() +
     pinned: false,
   });
+=======
+  if (clipList.length == 0)
+    clipList.push({
+      value: "A example of clip element",
+      time: new Date().toLocaleTimeString(), //new Date().toLocaleDateString() +
+      pinned: false,
+    });
+>>>>>>> main
   createView(clipList);
 });
 function clearClipboard(eventvalue) {
@@ -159,6 +168,15 @@ function deletClicks(eventReturn) {
     // Refresh view.
     clipboard.writeText("");
     //Nothing is copied
+<<<<<<< HEAD
+=======
+    if (clipList.length == 0)
+      clipList.push({
+        value: "A example of clip element",
+        time: new Date().toLocaleTimeString(), //new Date().toLocaleDateString() +
+        pinned: false,
+      });
+>>>>>>> main
     createView(clipList);
   } catch (err) {
     console.log("Unable to delete and refresh the list");
