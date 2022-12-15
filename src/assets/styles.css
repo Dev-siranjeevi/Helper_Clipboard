@@ -53,6 +53,8 @@
     --clr-default-btn: #b4b3b3;
     --higlight-clr: #eb4747;
     --clr-copied: #8fe3cf;
+    --clr-hight-hover: var(--clr-copied);
+    --clr-separator: #787777;
     /* scrollbar */
     --clr-scroll-hght: #8ecaff;
   }
@@ -80,8 +82,10 @@
     --clr-default-btn: #b4b3b3;
     --higlight-clr: #a10035;
     --clr-copied: #8fe3cf;
+    --clr-hight-hover: #2f9cfc;
+    --clr-separator: #e7e6e6;
     /* scrollbar */
-    --clr-scroll-hght: #8ecaff;
+    --clr-scroll-hght: var(--clr-pri);
   }
 }
 
@@ -145,6 +149,11 @@ body {
 
 /* body */
 /* header */
+.sticky {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
 .title {
   color: var(--clr-pri);
   font-size: var(--tle-h1);
@@ -261,8 +270,25 @@ input:checked + .slider:before {
   gap: 12px;
   width: 100%;
   word-wrap: break-word;
+  transition: 0.2s;
+}
+.content-val {
+  transition: 0.5s;
+  cursor: pointer;
 }
 
+.clip:hover {
+  transform: scale(1.05);
+}
+.clip:hover > .content > .content-val {
+  color: var(--clr-hight-hover);
+}
+.content-val.activeCopies {
+  color: var(--clr-hight-hover);
+}
+.activeCopiesIcon path {
+  fill: var(--clr-hight-hover);
+}
 path {
   transition: 1s all;
 }
@@ -271,7 +297,9 @@ path {
   color: #b4b3b3;
   font-size: 0.75rem;
 }
-
+.action {
+  border-top: 1px solid var(--clr-separator);
+}
 .copies:hover + .action > .clipAction > .btn > .copy path {
   fill: var(--clr-copied);
 }

@@ -17,14 +17,22 @@ let testArr = [
     value: "clip",
     time: new Date().toLocaleDateString(),
     pinned: false,
+
+    activeCopy: false,
   },
   {
     value: "clip2",
+    time: new Date().toLocaleDateString(),
     pinned: false,
+
+    activeCopy: false,
   },
   {
     value: "clip3",
+    time: new Date().toLocaleDateString(),
     pinned: false,
+
+    activeCopy: false,
   },
 ];
 
@@ -49,6 +57,7 @@ const copyToClipboard = () => {
       value: clip,
       time: new Date().toLocaleTimeString(), //new Date().toLocaleDateString() +
       pinned: false,
+      activeCopy: true,
     };
     if (
       clipList.length == 1 &&
@@ -59,6 +68,11 @@ const copyToClipboard = () => {
     clipList.forEach((val) => {
       if (val.value == clip) {
         clipAvbl = true;
+        val.activeCopy = true;
+      } else {
+        clipList.forEach((item) => {
+          item.activeCopy = false;
+        });
       }
     });
     if (clipAvbl === false) {
@@ -110,6 +124,13 @@ function copyClicks(eventReturn) {
   const findandUpdate = prior[clickedElementID.replace("copies", "")];
   // Refresh view.
   clipboard.writeText(findandUpdate.value);
+  prior.forEach((item) => {
+    item.activeCopy = false;
+  });
+  findandUpdate.activeCopy = true;
+  clipList = prior.slice().reverse();
+  // Refresh view.
+  createView(clipList);
 }
 // *******************************************************CLEARING ALL DATA***********************************************************************//
 // clear clipboard
