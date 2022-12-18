@@ -1,5 +1,11 @@
 // Modules to control application life and create native browser window
-const { app, BrowserWindow, ipcMain, globalShortcut } = require("electron");
+const {
+  app,
+  BrowserWindow,
+  ipcMain,
+  globalShortcut,
+  ipcRenderer,
+} = require("electron");
 const path = require("path");
 const url = require("url");
 let mainWindow;
@@ -65,24 +71,35 @@ const createWindow = () => {
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
   createWindow();
-  // // Register a 'CommandOrControl+Y' shortcut listener.
-  // globalShortcut.register('Alt+V', () => {
-  //   // Do stuff when Y and either Command/Control is pressed.
-  //
-  //   mainWindow.movable ? mainWindow.movable = false : mainWindow.movable = true;
-  // })
 
   app.on("activate", () => {
     // On macOS it's common to re-create a window in the app when the
     // dock icon is clicked and there are no other windows open.
     if (BrowserWindow.getAllWindows().length === 0) createWindow();
   });
+  // Disable default Refersh options &   // // Register a 'CommandOrControl+R' shortcut listener.
+  app.on("browser-window-focus", function () {
+    globalShortcut.register("CommandOrControl+R ", () => {
+      // Do stuff when Y and either Command/Control is pressed.
+      console.log("CommandOrControl+R command Disabled");
+    });
+  });
+  // Enable refresh options when active application is switched
+  app.on("browser-window-blur", function () {
+    globalShortcut.unregister("CommandOrControl+R");
+  });
 });
 // Mesaging btw:
 ipcMain.on("Update-Application-position", (event, arg) => {
-  mainWindow.movable
-    ? (mainWindow.movable = false)
-    : (mainWindow.movable = true);
+  let posStatus;
+  if (mainWindow.movable) {
+    posStatus = "fixed";
+    mainWindow.movable = false;
+  } else {
+    posStatus = "float";
+    mainWindow.movable = true;
+  }
+  event.reply("setState", posStatus);
 });
 ipcMain.on("Update-Application-layer", (event, arg) => {
   mainWindow.isAlwaysOnTop()
