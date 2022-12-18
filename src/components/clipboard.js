@@ -85,6 +85,7 @@ const copyToClipboard = () => {
 // *******************************************************PRIOTIZE OR PIN SPECIFIC DATA TO TOP OF THE LIST************************************ ******//
 function pinClicks(eventReturn) {
   const clickedElementID = eventReturn.path[1].id;
+
   // Set styling
   const clickedOn = document.getElementById(clickedElementID);
   clickedOn.className.baseVal.includes("pinactive")

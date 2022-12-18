@@ -25,3 +25,9 @@ alwaysOntop.addEventListener("click", () => {
     ? alwaysOntop.classList.remove("pinactive")
     : alwaysOntop.classList.add("pinactive");
 });
+
+window.addEventListener("load", () => {
+  const footer = document.getElementById("act");
+  const activeVersion = "V4.1.2";
+  footer.innerHTML = activeVersion;
+});

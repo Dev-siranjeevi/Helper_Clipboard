@@ -91,10 +91,11 @@
 
 body {
   background-color: var(--clr-bg-lgt);
+  font-family: robomed;
 }
 
 .body {
-  margin: 13px 14px;
+  padding: 13px 14px;
   font-family: robomed;
   display: flex;
   flex-direction: column;
@@ -278,7 +279,7 @@ input:checked + .slider:before {
 }
 
 .clip:hover {
-  transform: scale(1.05);
+  transform: scale(0.95);
 }
 .clip:hover > .content > .content-val {
   color: var(--clr-hight-hover);
@@ -292,22 +293,29 @@ input:checked + .slider:before {
 path {
   transition: 1s all;
 }
-
+.clipAction {
+  gap: 12px;
+}
 .timeline {
   color: #b4b3b3;
   font-size: 0.75rem;
 }
 .action {
+  padding-block-start: 6px;
   border-top: 1px solid var(--clr-separator);
 }
 .copies:hover + .action > .clipAction > .btn > .copy path {
   fill: var(--clr-copied);
 }
-
+.btn-default {
+  /* transition: 0.5s; */
+}
 .pin:hover path {
   fill: var(--clr-pri);
 }
-
+.pinactive {
+  transform: rotate(180deg);
+}
 .pinactive path {
   fill: var(--clr-pri);
 }
@@ -320,10 +328,18 @@ path {
 .delAllClip:hover path {
   fill: var(--higlight-clr);
 }
-
-.footer {
+.footerContainer {
+  /* height: 2vh; */
+}
+.footerWrap {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  text-align: center;
+  align-items: center;
+}
+.footer {
+  /* justify-content: center;
+  text-align: center; */
 }
 
 .copyright {
@@ -331,8 +347,4 @@ path {
   padding: 1rem;
   padding-block-end: 0;
   font-size: 9px;
-}
-
-.btn {
-  padding: 8px;
 }
