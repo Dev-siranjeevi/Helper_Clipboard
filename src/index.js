@@ -1,10 +1,11 @@
-const { ipcRenderer, clipboard } = require("electron");
+const { ipcRenderer } = require("electron");
 
-import { copyToClipboard, clipList } from "./components/clipboard.js";
+import { copyToClipboard } from "./components/clipboard.js";
 
+const timeInterval = 500;
 setInterval(() => {
   copyToClipboard();
-}, 800); //Run it ever 500 ms
+}, timeInterval); //Run it ever 500 ms
 
 const pinApplication = document.querySelector("#move");
 let positionStatus = "float";
