@@ -73,11 +73,21 @@ let clipView = (data, time, postion, pinstatus, copyStatus) => {
             </span>
 
             <span class="btn fl" >
-              <svg class="btn-default pin ${
+              <svg
+              class="btn-default pin ${
                 pinstatus ? "pinactive" : ""
-              }"  id="pin${postion}" width="10" height="15" viewBox="0 0 16 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M13.7143 0H2.28571C1.02857 0 0.0114288 1.02857 0.0114288 2.28571L0 20.5714L8 17.1429L16 20.5714V2.28571C16 1.02857 14.9714 0 13.7143 0Z" fill="black"/>
-              </svg>
+              }"  id="pin${postion}"
+            fill="none"
+            height="20"
+            viewBox="0 0 20 20"
+            width="20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M13.3251 2.61804C12.3599 1.65275 10.7326 1.91683 10.1221 3.13783L8.39285 6.59628C8.22855 6.92486 7.94939 7.18173 7.60829 7.31817L4.01834 8.75415C3.35177 9.02078 3.17498 9.88209 3.68262 10.3897L6.29289 13L3 16.2929V17H3.70711L7 13.7071L9.61027 16.3174C10.1179 16.825 10.9792 16.6482 11.2459 15.9817L12.6818 12.3917C12.8183 12.0506 13.0751 11.7715 13.4037 11.6072L16.8622 9.87793C18.0832 9.26743 18.3472 7.64015 17.382 6.67486L13.3251 2.61804Z"
+              fill="#212121"
+            />
+          </svg>
             </span>
             <span class="btn fl" >
               <svg class="btn-default delete-single" id="del${postion}" width="12" height="15" viewBox="0 0 12 15" fill="none" xmlns="http://www.w3.org/2000/svg">
