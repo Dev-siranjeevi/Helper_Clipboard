@@ -52,7 +52,9 @@ let clipView = (data, time, postion, pinstatus, copyStatus) => {
   const clip = `<div class="clip">
         <!-- Clip value -->
         <div class="content copies " id="copies${postion}">
-          <p class="content-val noselect ${copyStatus ? "activeCopies" : ""}">
+          <p class="content-val noselect ${
+            copyStatus ? "activeCopies" : ""
+          }" id="clipData${postion}">
           ${data}
           </p>
         </div>

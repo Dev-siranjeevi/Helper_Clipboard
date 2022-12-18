@@ -2,7 +2,7 @@ const { ipcRenderer } = require("electron");
 
 import { copyToClipboard } from "./components/clipboard.js";
 
-const timeInterval = 500;
+const timeInterval = 800;
 setInterval(() => {
   copyToClipboard();
 }, timeInterval); //Run it ever 500 ms

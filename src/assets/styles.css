@@ -47,8 +47,9 @@
     --mod-h2: 0.8rem;
     --mod-clr-h2: #b4b3b3;
     /* Color */
-    --clr-bg-lgt: #2c2b2b;
-    --clr-card: #5f5f5f;
+    --clr-bg-lgt: #242529; /* #2c2b2b; */
+    --clr-card: #3c3f47;
+    /* 5f5f5f; */
     --clr-pri: #2f9cfc;
     --clr-default-btn: #b4b3b3;
     --higlight-clr: #eb4747;
@@ -162,6 +163,10 @@ body {
 }
 .light-dark {
   gap: 4px;
+}
+.btn-default {
+  width: 16px;
+  height: 16px;
 }
 .btn-default path {
   fill: var(--clr-default-btn);

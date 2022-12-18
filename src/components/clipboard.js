@@ -36,7 +36,7 @@ let testArr = [
   },
 ];
 
-let clipList = []; //Set an empty array
+let clipList = [...testArr]; //Set an empty array
 // *******************************************************TOGGLING COORDINATE MODULE***********************************************************************//
 
 // Check and update the status of coordinate module.
@@ -59,20 +59,24 @@ const copyToClipboard = () => {
       pinned: false,
       activeCopy: true,
     };
+    // If nothing is copied then and contians only template values, we clear the array and start inputting the clipboard data.
     if (
       clipList.length == 1 &&
       clipList[0].value == "A example of clip element"
-    )
+    ) {
       clipList = [];
+    }
+
     let clipAvbl = false;
     clipList.forEach((val) => {
-      if (val.value == clip) {
+      if (val.value === clip) {
         clipAvbl = true;
         val.activeCopy = true;
       } else {
-        clipList.forEach((item) => {
-          item.activeCopy = false;
-        });
+        // clipList.forEach((item) => {
+        //   item.activeCopy = false;
+        // });
+        val.activeCopy = false;
       }
     });
     if (clipAvbl === false) {

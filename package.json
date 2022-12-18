@@ -1,6 +1,6 @@
 {
   "name": "One step Helper clipboard",
-  "version": "4.2.0",
+  "version": "4.2.1",
   "description": "Copy, paste,store and convert",
   "main": "app.js",
   "scripts": {
