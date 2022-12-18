@@ -164,10 +164,10 @@ body {
 .light-dark {
   gap: 4px;
 }
-.btn-default {
+/* .btn-default {
   width: 16px;
   height: 16px;
-}
+} */
 .btn-default path {
   fill: var(--clr-default-btn);
 }
@@ -289,8 +289,12 @@ input:checked + .slider:before {
 .clip:hover > .content > .content-val {
   color: var(--clr-hight-hover);
 }
-.content-val.activeCopies {
+/* .content-val.activeCopies {
   color: var(--clr-hight-hover);
+} */
+.activeCopies {
+  border: 2px solid var(--clr-pri);
+  border-radius: 0.625rem 0;
 }
 .activeCopiesIcon path {
   fill: var(--clr-hight-hover);
@@ -305,6 +309,9 @@ path {
   color: #b4b3b3;
   font-size: 0.75rem;
 }
+.time {
+  cursor: not-allowed;
+}
 .action {
   padding-block-start: 6px;
   border-top: 1px solid var(--clr-separator);
@@ -314,6 +321,8 @@ path {
 }
 .btn-default {
   /* transition: 0.5s; */
+
+  cursor: pointer;
 }
 .pin:hover path {
   fill: var(--clr-pri);

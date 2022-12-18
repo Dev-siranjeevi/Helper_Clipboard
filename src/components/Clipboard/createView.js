@@ -49,12 +49,10 @@ const addEventsClip = () => {
 
 const clips = document.querySelector(".clips");
 let clipView = (data, time, postion, pinstatus, copyStatus) => {
-  const clip = `<div class="clip">
+  const clip = `<div class="clip  ${copyStatus ? "activeCopies" : ""}">
         <!-- Clip value -->
         <div class="content copies " id="copies${postion}">
-          <p class="content-val noselect ${
-            copyStatus ? "activeCopies" : ""
-          }" id="clipData${postion}">
+          <p class="content-val noselect" id="clipData${postion}">
           ${data}
           </p>
         </div>
