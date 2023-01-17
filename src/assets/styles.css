@@ -17,7 +17,7 @@
 :root {
   /* Distance */
   --switch-slider: 12px;
-  --switch-slider-translate: 20px;
+  --switch-slider-translate: 16px;
   --switch-postion: 4px;
   /* Header */
   --tle-h1: 1rem;
@@ -39,7 +39,7 @@
   :root {
     /* Distance */
     --switch-slider: 12px;
-    --switch-slider-translate: 20px;
+    --switch-slider-translate: 16px;
     --switch-postion: 4px;
     /* Header */
     --tle-h1: 1rem;
@@ -107,7 +107,7 @@ body {
 .fl {
   display: flex;
   /* border: 1px solid black; */
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
 }
 
 .fl-spbtw {
@@ -184,7 +184,7 @@ body {
 .switch {
   position: relative;
   display: inline-block;
-  width: 40px;
+  width: 36px;
   height: 20px;
 }
 
@@ -245,7 +245,7 @@ input:checked + .slider:before {
 }
 
 .modules {
-  gap: 12px;
+  gap: 8px;
   align-items: center;
 }
 

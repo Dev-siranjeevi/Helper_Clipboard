@@ -36,7 +36,7 @@ let testArr = [
   },
 ];
 
-let clipList = [...testArr]; //Set an empty array
+let clipList = []; //Set an empty array
 // *******************************************************TOGGLING COORDINATE MODULE***********************************************************************//
 
 // Check and update the status of coordinate module.

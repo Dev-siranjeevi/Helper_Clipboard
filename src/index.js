@@ -28,6 +28,6 @@ alwaysOntop.addEventListener("click", () => {
 
 window.addEventListener("load", () => {
   const footer = document.getElementById("act");
-  const activeVersion = "V4.1.2";
+  const activeVersion = "V5.0.0";
   footer.innerHTML = activeVersion;
 });
