@@ -17,14 +17,22 @@ let testArr = [
     value: "clip",
     time: new Date().toLocaleDateString(),
     pinned: false,
+
+    activeCopy: false,
   },
   {
     value: "clip2",
+    time: new Date().toLocaleDateString(),
     pinned: false,
+
+    activeCopy: false,
   },
   {
     value: "clip3",
+    time: new Date().toLocaleDateString(),
     pinned: false,
+
+    activeCopy: false,
   },
 ];
 
@@ -49,16 +57,26 @@ const copyToClipboard = () => {
       value: clip,
       time: new Date().toLocaleTimeString(), //new Date().toLocaleDateString() +
       pinned: false,
+      activeCopy: true,
     };
+    // If nothing is copied then and contians only template values, we clear the array and start inputting the clipboard data.
     if (
       clipList.length == 1 &&
       clipList[0].value == "A example of clip element"
-    )
+    ) {
       clipList = [];
+    }
+
     let clipAvbl = false;
     clipList.forEach((val) => {
-      if (val.value == clip) {
+      if (val.value === clip) {
         clipAvbl = true;
+        val.activeCopy = true;
+      } else {
+        // clipList.forEach((item) => {
+        //   item.activeCopy = false;
+        // });
+        val.activeCopy = false;
       }
     });
     if (clipAvbl === false) {
@@ -71,6 +89,7 @@ const copyToClipboard = () => {
 // *******************************************************PRIOTIZE OR PIN SPECIFIC DATA TO TOP OF THE LIST************************************ ******//
 function pinClicks(eventReturn) {
   const clickedElementID = eventReturn.path[1].id;
+
   // Set styling
   const clickedOn = document.getElementById(clickedElementID);
   clickedOn.className.baseVal.includes("pinactive")
@@ -110,6 +129,13 @@ function copyClicks(eventReturn) {
   const findandUpdate = prior[clickedElementID.replace("copies", "")];
   // Refresh view.
   clipboard.writeText(findandUpdate.value);
+  prior.forEach((item) => {
+    item.activeCopy = false;
+  });
+  findandUpdate.activeCopy = true;
+  clipList = prior.slice().reverse();
+  // Refresh view.
+  createView(clipList);
 }
 // *******************************************************CLEARING ALL DATA***********************************************************************//
 // clear clipboard

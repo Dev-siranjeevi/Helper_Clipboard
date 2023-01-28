@@ -25,7 +25,7 @@ export const createView = (list) => {
     // console.log(index);
     clips.insertAdjacentHTML(
       "beforeend",
-      clipView(clip.value, clip.time, index, clip.pinned)
+      clipView(clip.value, clip.time, index, clip.pinned, clip.activeCopy)
     );
   });
   addEventsClip();
@@ -48,11 +48,11 @@ const addEventsClip = () => {
 };
 
 const clips = document.querySelector(".clips");
-let clipView = (data, time, postion, pinstatus) => {
-  const clip = `<div class="clip">
+let clipView = (data, time, postion, pinstatus, copyStatus) => {
+  const clip = `<div class="clip  ${copyStatus ? "activeCopies" : ""}">
         <!-- Clip value -->
-        <div class="content copies" id="copies${postion}">
-          <p class="  content-val noselect">
+        <div class="content copies " id="copies${postion}">
+          <p class="content-val noselect" id="clipData${postion}">
           ${data}
           </p>
         </div>
@@ -65,17 +65,29 @@ let clipView = (data, time, postion, pinstatus) => {
           </div>
           <div class="clipAction fl fl-spbtw fl fl-spbtw-spbtw">
           <span class="btn fl">
-            <svg class="btn-default copy"  id="copy${postion}" width="12" height="15" viewBox="0 0 12 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg class="btn-default copy ${
+              copyStatus ? "activeCopiesIcon" : ""
+            }"  id="copy${postion}" width="12" height="15" viewBox="0 0 12 15" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M8.57143 13.125V14.2969C8.57143 14.6852 8.28362 15 7.92857 15H0.642857C0.287812 15 0 14.6852 0 14.2969V3.51562C0 3.12729 0.287812 2.8125 0.642857 2.8125H2.57143V11.4844C2.57143 12.389 3.24431 13.125 4.07143 13.125H8.57143ZM8.57143 3.04688V0H4.07143C3.71638 0 3.42857 0.314795 3.42857 0.703125V11.4844C3.42857 11.8727 3.71638 12.1875 4.07143 12.1875H11.3571C11.7122 12.1875 12 11.8727 12 11.4844V3.75H9.21429C8.86071 3.75 8.57143 3.43359 8.57143 3.04688ZM11.8117 2.13782L10.0454 0.205928C9.92486 0.0740749 9.76136 9.74989e-07 9.59087 0L9.42857 0V2.8125H12V2.63499C12 2.44852 11.9323 2.26968 11.8117 2.13782V2.13782Z" />
             </svg>
             </span>
 
             <span class="btn fl" >
-              <svg class="btn-default pin ${
+              <svg
+              class="btn-default pin ${
                 pinstatus ? "pinactive" : ""
-              }"  id="pin${postion}" width="10" height="15" viewBox="0 0 16 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M13.7143 0H2.28571C1.02857 0 0.0114288 1.02857 0.0114288 2.28571L0 20.5714L8 17.1429L16 20.5714V2.28571C16 1.02857 14.9714 0 13.7143 0Z" fill="black"/>
-              </svg>
+              }"  id="pin${postion}"
+            fill="none"
+            height="20"
+            viewBox="0 0 20 20"
+            width="20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M13.3251 2.61804C12.3599 1.65275 10.7326 1.91683 10.1221 3.13783L8.39285 6.59628C8.22855 6.92486 7.94939 7.18173 7.60829 7.31817L4.01834 8.75415C3.35177 9.02078 3.17498 9.88209 3.68262 10.3897L6.29289 13L3 16.2929V17H3.70711L7 13.7071L9.61027 16.3174C10.1179 16.825 10.9792 16.6482 11.2459 15.9817L12.6818 12.3917C12.8183 12.0506 13.0751 11.7715 13.4037 11.6072L16.8622 9.87793C18.0832 9.26743 18.3472 7.64015 17.382 6.67486L13.3251 2.61804Z"
+              fill="#212121"
+            />
+          </svg>
             </span>
             <span class="btn fl" >
               <svg class="btn-default delete-single" id="del${postion}" width="12" height="15" viewBox="0 0 12 15" fill="none" xmlns="http://www.w3.org/2000/svg">
