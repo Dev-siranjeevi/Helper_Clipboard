@@ -36,31 +36,6 @@ const createWindow = () => {
   mainWindow = new BrowserWindow(mainWindow_Options);
   // and load the index.html of the app.
   mainWindow.loadURL(url.format(appURL));
-  // // Create the browser window.
-  // const preload_Options = {
-  //   width: 300,
-  //   height: 200,
-  //   transparent: true,
-  //   frame: false,
-  //   alwaysOnTop: true,
-  //   roundedCorners: true,
-  // };
-  // const preloadURL = {
-  //   pathname: path.join(__dirname + "/src/components/preloader/loading.html"),
-  //   slashes: true,
-  //   protocal: "file:/",
-  // };
-
-  // // and load the index.html of the app.
-  // preloadWindow = new BrowserWindow(preload_Options);
-  // preloadWindow.loadURL(url.format(preloadURL));
-  // preloadWindow.center();
-
-  // setTimeout(function () {
-  //   preloadWindow.close();
-  //   mainWindow.center();
-  //   mainWindow.show();
-  // }, 6000);
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
