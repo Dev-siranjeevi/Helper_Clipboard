@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron .",
-    "package-win": "electron-packager . Clipboard --overwrite --asar=true --platform=win32 --arch=ia32 --icon=src/assets/icons/appIconV4.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Helper_Clipboard\""
+    "package-win": "electron-packager . Clipboard --overwrite --asar=true --platform=win32 --arch=ia32 --icon=src/assets/icons/app.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Helper_Clipboard\""
   },
   "author": "One step",
   "license": "ISC",

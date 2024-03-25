@@ -63,15 +63,7 @@ let clipView = (data, time, postion, pinstatus, copyStatus) => {
             </span>
           </div>
           <div class="clipAction fl fl-spbtw fl fl-spbtw-spbtw">
-          <span class="btn fl">
-            <svg class="btn-default copy ${
-              copyStatus ? "activeCopiesIcon" : ""
-            }"  id="copy${postion}" width="12" height="15" viewBox="0 0 12 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M8.57143 13.125V14.2969C8.57143 14.6852 8.28362 15 7.92857 15H0.642857C0.287812 15 0 14.6852 0 14.2969V3.51562C0 3.12729 0.287812 2.8125 0.642857 2.8125H2.57143V11.4844C2.57143 12.389 3.24431 13.125 4.07143 13.125H8.57143ZM8.57143 3.04688V0H4.07143C3.71638 0 3.42857 0.314795 3.42857 0.703125V11.4844C3.42857 11.8727 3.71638 12.1875 4.07143 12.1875H11.3571C11.7122 12.1875 12 11.8727 12 11.4844V3.75H9.21429C8.86071 3.75 8.57143 3.43359 8.57143 3.04688ZM11.8117 2.13782L10.0454 0.205928C9.92486 0.0740749 9.76136 9.74989e-07 9.59087 0L9.42857 0V2.8125H12V2.63499C12 2.44852 11.9323 2.26968 11.8117 2.13782V2.13782Z" />
-            </svg>
-            </span>
-
-            <span class="btn fl" >
+           <span class="btn fl" >
               <svg
               class="btn-default pin ${
                 pinstatus ? "pinactive" : ""

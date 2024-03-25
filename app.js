@@ -21,7 +21,7 @@ const createWindow = () => {
     frame: false,
     // show: false,
     // transparent:true,
-    icon: path.join(__dirname, "/assets/icons/appIconV4.ico"),
+    icon: path.join(__dirname, "/src/assets/icons/app.ico"),
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
@@ -46,7 +46,7 @@ const createWindow = () => {
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
   createWindow();
-
+  // console.log(path.join(__dirname, "/src/assets/icons/app.ico"));
   app.on("activate", () => {
     // On macOS it's common to re-create a window in the app when the
     // dock icon is clicked and there are no other windows open.
