@@ -38,7 +38,7 @@ const createWindow = () => {
   mainWindow.loadURL(url.format(appURL));
 
   // Open the DevTools.
-  // mainWindow.webContents.openDevTools()
+  mainWindow.webContents.openDevTools(); // Diable before putting in productions.
 };
 
 // This method will be called when Electron has finished

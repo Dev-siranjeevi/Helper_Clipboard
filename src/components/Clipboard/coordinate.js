@@ -21,26 +21,17 @@ let gsdir = "";
 async function intialCoord(active, val) {
   const coordCopied = val.includes("\t") ? val.replace(/\t/g, "") : val;
   gsdir = val.includes("\t") ? val.replace(/\t/g, "") : val;
-  console.log(coordCopied);
-  console.log(val);
   const coordLeng = val.length;
   let finalOutput = [];
   if (active) {
     //If coordinate is on then follow the module
-
-    // Check and update the position of the coordinate direction
-    direction.forEach((it) => {
-      // loop through all the direction
-      if (coordCopied.includes(it)) {
-        if (coordCopied.indexOf(it) == coordCopied.length - 1) {
-          // remove the direction from it location and replace it at as the initial letter.
-          gsdir = it + coordCopied.replace(it, "");
-        }
-      }
-    });
     // remove all separators
     let nilSepCoords = await separatorCoord(gsdir);
     nilSepCoords = await separatorCoord(nilSepCoords);
+
+    if (!isNaN(nilSepCoords.split("")[0])) {
+      nilSepCoords = await reformatt(nilSepCoords);
+    }
     let identifyCord = [];
     const checkLong = nilSepCoords
       .split("")
@@ -52,14 +43,23 @@ async function intialCoord(active, val) {
       const idnt = nilSepCoords.includes("E")
         ? nilSepCoords.indexOf("E")
         : nilSepCoords.includes("W");
-      console.log(nilSepCoords);
       identifyCord.push(nilSepCoords.substr(0, idnt));
       identifyCord.push(nilSepCoords.substr(idnt));
     } else {
       identifyCord.push(nilSepCoords);
     }
-    console.log(identifyCord);
-    identifyCord.forEach((nilSepCoord) => {
+    identifyCord.forEach((nilSepCoor) => {
+      let nilSepCoord = nilSepCoor;
+      // Check and update the position of the coordinate direction
+      direction.forEach((it) => {
+        // loop through all the direction
+        if (nilSepCoord.includes(it)) {
+          if (nilSepCoord.indexOf(it) == nilSepCoord.length - 1) {
+            // remove the direction from it location and replace it at as the initial letter.
+            nilSepCoord = it + nilSepCoord.replace(it, "");
+          }
+        }
+      });
       // Get the direction of the coord and split accordingly
       let splitNumdeg = 4;
       let splitNummin = 6;
@@ -116,7 +116,28 @@ async function intialCoord(active, val) {
     return finalOutput;
   }
 }
+const reformatt = async (val) => {
+  console.log(val);
+  const arr = val.split("").map((e) => e.toUpperCase());
+  const latInd = arr.includes("N") ? arr.indexOf("N") : arr.indexOf("S");
 
+  // Updating Lon
+  const lonInd = arr.includes("E") ? arr.indexOf("E") : arr.indexOf("W");
+  const lonVal = arr.splice(lonInd, 1)[0];
+
+  arr.splice(latInd !== -1 ? latInd + 1 : 0, 0, lonVal);
+  console.log(arr);
+  // Updating lat
+  // arr.splice(0, 0, arr[latInd]);
+  if (latInd !== -1) {
+    const latVal = arr.splice(latInd, 1)[0];
+    arr.splice(0, 0, latVal);
+    console.log(arr);
+  }
+  const finalOut = arr.reduce((a, b) => a + b);
+  // console.log([finalOut.substr(0, lonInd), finalOut.substr(lonInd)]);
+  return arr.reduce((a, b) => a + b);
+};
 async function separatorCoord(coor) {
   let remSeparator = coor.replace(/,|·/g, "."); // remove from decimal places
   let sepa = await readFile("./Data/Demo.txt");
@@ -125,12 +146,6 @@ async function separatorCoord(coor) {
     remSeparator = remSeparator.replace(sep, " ");
   });
   remSeparator = remSeparator.replace(/ /g, ""); // remove all the separators // Fill the separator between /  /.
-  // let remSeparator = coor.replace(/,|·/g, "."); // remove from decimal places
-  // remSeparator = remSeparator
-  //   .replace(/,|°|’|-|'|”|:|"|'|º/g, "")
-  //   .replace(/ /g, ""); // remove all the separators // Fill the separator between /  /.
-  // // console.log(remSeparator);
-  // let remSeparator = coor;
   return remSeparator;
 }
 
