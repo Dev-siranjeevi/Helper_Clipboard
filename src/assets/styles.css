@@ -37,14 +37,6 @@
 @media (prefers-color-scheme: dark) {
   /* Setting custom attributes */
   :root {
-    /* Distance */
-    --switch-slider: 12px;
-    --switch-slider-translate: 16px;
-    --switch-postion: 4px;
-    /* Header */
-    --tle-h1: 1rem;
-    /* module */
-    --mod-h2: 0.8rem;
     --mod-clr-h2: #b4b3b3;
     /* Color */
     --clr-bg-lgt: #242529; /* #2c2b2b; */
@@ -67,14 +59,6 @@
 @media (prefers-color-scheme: light) {
   /* Setting custom attributes */
   :root {
-    /* Distance */
-    --switch-slider: 12px;
-    --switch-slider-translate: 20px;
-    --switch-postion: 4px;
-    /* Header */
-    --tle-h1: 1rem;
-    /* module */
-    --mod-h2: 0.8rem;
     --mod-clr-h2: #5f5f5f;
     /* Color */
     --clr-bg-lgt: #f4f4f4;

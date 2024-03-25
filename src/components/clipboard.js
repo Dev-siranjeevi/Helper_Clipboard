@@ -44,47 +44,49 @@ coordinate.addEventListener("change", (event) => {
   coordinateIndicator = event.srcElement.checked;
 });
 // *******************************************************FETCHING DATA FROM CLIP(SYS), VALIDATING AND VISULIZING*****************************************//
-const copyToClipboard = () => {
-  let clip = clipboard.readText(); //Get the clipboard text\
+const copyToClipboard = async () => {
+  let clips = [clipboard.readText()]; //Get the clipboard text\
 
-  const secondLetter = clip.substring(1, 2);
-  if (coordinateIndicator && clip !== "" && !isNaN(secondLetter)) {
-    clip = intialCoord(coordinateIndicator, clip);
-    clipboard.writeText(clip);
+  const secondLetter = clips[0].substring(1, 2);
+  if (coordinateIndicator && clips[0] !== "" && !isNaN(secondLetter)) {
+    clips = await intialCoord(coordinateIndicator, clips[0]);
   }
-  if (clip !== "") {
-    let copiedValue = {
-      value: clip,
-      time: new Date().toLocaleTimeString(), //new Date().toLocaleDateString() +
-      pinned: false,
-      activeCopy: true,
-    };
-    // If nothing is copied then and contians only template values, we clear the array and start inputting the clipboard data.
+  clips.forEach((clip) => {
     if (
-      clipList.length == 1 &&
-      clipList[0].value == "A example of clip element"
+      clip !== "" &&
+      clip !=
+        "Retrieving data. Wait a few seconds and try to cut or copy again."
     ) {
-      clipList = [];
-    }
-
-    let clipAvbl = false;
-    clipList.forEach((val) => {
-      if (val.value === clip) {
-        clipAvbl = true;
-        val.activeCopy = true;
-      } else {
-        // clipList.forEach((item) => {
-        //   item.activeCopy = false;
-        // });
-        val.activeCopy = false;
+      clipboard.writeText(clip);
+      let copiedValue = {
+        value: clip,
+        time: new Date().toLocaleTimeString(), //new Date().toLocaleDateString() +
+        pinned: false,
+        activeCopy: true,
+      };
+      // If nothing is copied then and contians only template values, we clear the array and start inputting the clipboard data.
+      if (
+        clipList.length == 1 &&
+        clipList[0].value == "A example of clip element"
+      ) {
+        clipList = [];
       }
-    });
-    if (clipAvbl === false) {
-      //Check if the element exist in the array
-      clipList.push(copiedValue); //if not then
-      createView(clipList);
+      let clipAvbl = false;
+      clipList.forEach((val) => {
+        if (val.value === clip) {
+          clipAvbl = true;
+          val.activeCopy = true;
+        } else {
+          val.activeCopy = false;
+        }
+      });
+      if (clipAvbl === false) {
+        //Check if the element exist in the array
+        clipList.push(copiedValue); //if not then
+        createView(clipList);
+      }
     }
-  }
+  });
 };
 // *******************************************************PRIOTIZE OR PIN SPECIFIC DATA TO TOP OF THE LIST************************************ ******//
 function pinClicks(eventReturn) {
