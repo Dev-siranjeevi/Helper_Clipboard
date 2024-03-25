@@ -35,7 +35,15 @@ let testArr = [
     activeCopy: false,
   },
 ];
-
+export const defaultSetup = () => {
+  if (clipList.length == 0)
+    clipList.push({
+      value: "A example of clip element",
+      time: new Date().toLocaleTimeString(), //new Date().toLocaleDateString() +
+      pinned: false,
+    });
+  createView(clipList);
+};
 let clipList = []; //Set an empty array
 // *******************************************************TOGGLING COORDINATE MODULE***********************************************************************//
 
@@ -87,6 +95,9 @@ const copyToClipboard = async () => {
       }
     }
   });
+  if (clipList.length == 0) {
+    defaultSetup();
+  }
 };
 // *******************************************************PRIOTIZE OR PIN SPECIFIC DATA TO TOP OF THE LIST************************************ ******//
 function pinClicks(eventReturn) {
@@ -144,14 +155,9 @@ function copyClicks(eventReturn) {
 clearAllData.addEventListener("click", (a) => {
   clearClipboard(a);
   // Update the UI
-  if (clipList.length == 0)
-    clipList.push({
-      value: "A example of clip element",
-      time: new Date().toLocaleTimeString(), //new Date().toLocaleDateString() +
-      pinned: false,
-    });
-  createView(clipList);
+  defaultSetup();
 });
+
 function clearClipboard(eventvalue) {
   // loop through the list to filter out the pinned elements
   let pinnedClip = clipList.filter((item) => {

@@ -3,7 +3,6 @@ import { clipList, copyClicks, pinClicks, deletClicks } from "../clipboard.js";
 
 export const createView = (list) => {
   let prev = document.querySelectorAll(".clip");
-  // console.log(prev);
   // Check and remove exsiting
   try {
     if (prev.length > 0) {
