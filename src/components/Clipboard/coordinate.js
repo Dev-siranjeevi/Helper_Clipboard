@@ -19,8 +19,10 @@ async function readFile(filePath) {
 let direction = ["N", "S", "E", "W"];
 let gsdir = "";
 async function intialCoord(active, val) {
-  const coordCopied = val;
-  gsdir = val;
+  const coordCopied = val.includes("\t") ? val.replace(/\t/g, "") : val;
+  gsdir = val.includes("\t") ? val.replace(/\t/g, "") : val;
+  console.log(coordCopied);
+  console.log(val);
   const coordLeng = val.length;
   let finalOutput = [];
   if (active) {
@@ -31,7 +33,8 @@ async function intialCoord(active, val) {
       // loop through all the direction
       if (coordCopied.includes(it)) {
         if (coordCopied.indexOf(it) == coordCopied.length - 1) {
-          gsdir = it + coordCopied.replace(it, ""); // remove the direction from it location and replace it at as the initial letter.
+          // remove the direction from it location and replace it at as the initial letter.
+          gsdir = it + coordCopied.replace(it, "");
         }
       }
     });
@@ -116,7 +119,7 @@ async function intialCoord(active, val) {
 
 async function separatorCoord(coor) {
   let remSeparator = coor.replace(/,|·/g, "."); // remove from decimal places
-  let sepa = await readFile("./src/Data/Demo.txt");
+  let sepa = await readFile("./Data/Demo.txt");
   sepa = sepa.split("\n").map((e) => e.replace("\r", ""));
   sepa.forEach((sep) => {
     remSeparator = remSeparator.replace(sep, " ");
